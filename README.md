@@ -1,11 +1,11 @@
-#Proyecto Final Bootcamp 2019
+# Proyecto Final Bootcamp 2019
 
-###Requerimientos Proyecto Final Bootcamp 2019
+### Requerimientos Proyecto Final Bootcamp 2019
 
 Página Web: https://www.spotify.com/mx
 Fecha: **30 de Septiembre 2019**
 
-####Use Cases
+#### Use Cases
 - Como usuario, puedo ingresar a la pagina https://www.spotify.com/mx y visualizar la pantalla de inicio.
 - Como usuario, puedo ingresar a la pagina https://www.spotify.com/mx y despues iniciar sesion en “Inicio de Sesion” y despues ingresar mis credenciales.
 - Como usuario, puedo ingresar a la pagina https://www.spotify.com/mx y dar click en “Obten Spotify Gratis” para ir a la pagina de registro.
