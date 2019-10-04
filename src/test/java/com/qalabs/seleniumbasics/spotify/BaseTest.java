@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeClass;
             String browser= "chrome";
             //get corrent driver for disere browser
             myDriver= WebDriverFactory.getDriver(browser);
+
         }
         @AfterClass(alwaysRun=true)
         public void tearDown(){
