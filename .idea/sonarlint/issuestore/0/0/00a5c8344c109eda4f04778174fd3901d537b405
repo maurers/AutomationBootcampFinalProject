@@ -1,0 +1,5 @@
+
+qsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(¢ÎŠÍ8Þ”äžÙ-
+Ksquid:S1068	"(Remove this unused "wait" private field.(íÒá§ùÿÿÿÿ8Þª¿ Ù-
+Usquid:S1135"2Complete the task associated to this TODO comment.(ò„¬Ùþÿÿÿÿ8†¥åžÙ-
+Vsquid:UselessImportCheck"&Remove this unused import 'utils.Log'.(Î¤—·ûÿÿÿÿ8þû¿ Ù-
