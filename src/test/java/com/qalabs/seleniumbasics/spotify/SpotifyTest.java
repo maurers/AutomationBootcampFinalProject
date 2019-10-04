@@ -25,8 +25,8 @@ public class SpotifyTest {
         name=propertyReader.getProperty("credentials.properties", "USERNAME");
         pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
 
-        spotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
-        sporifyLoginPage.spotifyLoginPage(name,pass);
+        spotifyLoginForm spotifyLoginForm = new SpotifyLoginPage(driver);
+        spotifyLoginForm.spotifyLoginForm(name,pass);
 
         Assert.assertEquals( driver.getSpotifyLogin(), SpotifyLoginPage);
         Assert.assertTrue( false, "bad_credentials" );
@@ -53,7 +53,7 @@ public class SpotifyTest {
         year=propertyReader.getProperty("credentials.properties", "YEAR_VALID");
         gender=propertyReader.getPorperty("credentials.properties","GENDER");
 
-        spotifySignUpForm spotifySingUpForm = new SpotifySingUpForm(driver);
+        spotifySignUpForm spotifySingUpForm = new SpotifySingUpPage(driver);
         spotifySingUpForm.spotifySignUpForm(email,confirmEmail,pass,name,day,month,year,gender);
 
         Assert.assertFalse( true, "Se solicita validacion captcha" );
