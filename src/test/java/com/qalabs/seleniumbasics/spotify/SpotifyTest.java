@@ -17,7 +17,7 @@ public class SpotifyTest  extends BaseTest {
         spotifyUrl= propertyReader.getProperty("credentials.properties", "SPOTIFY_SIGNUP_URL");
     }
 
-    @Test(alwaysRun = true, priority = 1)
+    @Test(description = "TC_US2_003 / Acceder al formulario de Inicio de Sesión de Spotify")
     public void loggerInSpotify() {
         String name;
         String pass;
@@ -36,7 +36,7 @@ public class SpotifyTest  extends BaseTest {
         SpotifyLoginPage.spotifyLoginForm(name,pass);
     }
 
-    @Test@Test(description = "TC_US2_005 / Llenar campos de registros de obtén Spotify gratis se envían vacíos")
+    @Test@Test(description = "TC_US4_002 / Formulario de Crear cuenta nueva no se envia por dia de nacimiento invalido")
     public void loggerInSpotifySignUp() {
         String name= null;
         String pass = null;
