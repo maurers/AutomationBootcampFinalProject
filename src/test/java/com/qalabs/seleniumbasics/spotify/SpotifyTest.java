@@ -23,7 +23,7 @@ public class SpotifyTest extends BaseTest {
         String homePage = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
         String signUpPage = propertyReader.getProperty("credentials.properties", "URL_SIGNUP_PAGE");
 
-        //this.myDriver.navigate().to(homePage);
+        this.myDriver.navigate().to(homePage);
         SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertEquals(spotifyHomePage.BASE_URL, homePage, "Cargo una pagina diferente");
@@ -42,6 +42,7 @@ public class SpotifyTest extends BaseTest {
         PropertyReader propertyReader = new PropertyReader();
         String homePage = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
 
+        this.myDriver.navigate().to(homePage);
         SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertEquals(spotifyHomePage.BASE_URL, homePage, "Cargo una pagina diferente");
@@ -57,6 +58,7 @@ public class SpotifyTest extends BaseTest {
         String homePage = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
         String helpPage = propertyReader.getProperty("credentials.properties", "URL_HELP");
 
+        this.myDriver.navigate().to(homePage);
         SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertEquals(spotifyHomePage.BASE_URL, homePage, "Cargo una pagina diferente");
