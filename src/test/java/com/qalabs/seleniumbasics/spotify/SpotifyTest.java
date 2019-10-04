@@ -57,7 +57,7 @@ public class SpotifyTest {
         SpotifySignUpPage spotifySingUpPage = new SpotifySingUpPage(driver);
         SpotifySingUpPage.spotifySignUpPage(name,email,confirmEmail,pass,day,month,year,gender);
 
-        Assert.assertFalse( false, "Se solicita validacion captcha" );
+        Assert.assertFalse( true, "Se solicita validacion captcha" );
 
 
     }
