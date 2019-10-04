@@ -68,7 +68,7 @@ Clase es pública que extendiende BasePage.
 **Métodos:**
 - SpotifyLoginPage(driver:WebDriver) =  Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver
 - isLoaded() = Método que retorna un valor tipo booleano para determinar si la página Spotify esta desplegada o no.
-- spotifyLoginFrom() = Método para hacer Login una cuenta en Spotify, retorna un elemento de tipo SpotityLoginPage
+- spotifyLoginFrom(user:String, pass:String) = Método para hacer Login una cuenta en Spotify, retorna un elemento de tipo SpotityLoginPage
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
 ### SpotifySignUpPage
@@ -82,7 +82,7 @@ Clase es pública que extendiende BasePage.
 **Metodos:**
 - SpotifySingUpPage(driver:WebDriver) = Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver.
 - isLoad() = Este método se utiliza para identificar que la página se ha cargado.
-- spotifySingUpForm() = SpotifySignUpPage = En este metodo se generan los campos a ser llenados por el usuario con sus credenciales.
+- spotifySingUpForm(email:String, pass:String, name:String, year:String, gender:char) = SpotifySignUpPage = En este metodo se generan los campos a ser llenados por el usuario con sus credenciales.
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
 ### SpotifyHelpPage
@@ -132,7 +132,7 @@ Clase es pública que extendiende SpotifyComponent.
 
 **Metodos:**
 - LoginAccount(driver:WebDriver) = Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver.
-- LoginComponent() = Método para iniciar sesión.
+- LoginComponent(user:String, pass:String) = Método para iniciar sesión.
 
 ### HomeBodyComponent
 Clase es pública que extendiende SpotifyComponent.
@@ -162,4 +162,4 @@ Clase es pública que extendiende SpotifyComponent.
 
 **Métodos:**
 - SingUpComponent(driver:WebDriver) = Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver.
-- signUpAccount() = Método para generar un nuevo registro.
+- signUpAccount(email:String, pass:String, name:String, year:String, gender:char) = Método para generar un nuevo registro.
