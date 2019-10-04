@@ -38,7 +38,7 @@ public class SpotifyTest  extends BaseTest {
         SpotifyLoginPage.spotifyLoginForm(name,pass);
     }
     @Test(alwaysRun = true, priority = 2)
-    public void validateLoginPage() {
+    public void validateSignUpPage() {
 
         SpotifySignUpPage spotifySignUpPage = new SpotifySignUpPage(this.myDriver);
 
