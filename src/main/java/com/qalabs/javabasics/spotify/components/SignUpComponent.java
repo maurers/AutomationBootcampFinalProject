@@ -46,7 +46,7 @@ public class SignUpComponent extends BasePage {
     }
 
     public SpotifySignUpPage signUpAccount(String email, String pass, String name, String month,
-                                           String day, String year, char gender) {
+                                           String day, String year, String gender) {
 
         emailInput.sendKeys(email);
         confirmEmailInput.sendKeys(email);
@@ -56,10 +56,10 @@ public class SignUpComponent extends BasePage {
         monthSelect.selectByVisibleText(month);
         yearInput.sendKeys(year);
         for(WebElement item: genderRadioButtons){
-            if (gender == 'f' && item.getAttribute("id").contains("register-female")){
+            if (gender == "female" && item.getAttribute("id").contains("register-female")){
                 item.click();
             }
-            else if(gender == 'm' && item.getAttribute("id").contains("register-male")){
+            else if(gender == "male" && item.getAttribute("id").contains("register-male")){
                 item.click();
             }
             else{
@@ -69,5 +69,8 @@ public class SignUpComponent extends BasePage {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         return new SpotifySignUpPage(this.driver);
+    }
+
+    public void spotifySignUpform(String name, String pass, String email, String day, String month, String year, String gender) {
     }
 }

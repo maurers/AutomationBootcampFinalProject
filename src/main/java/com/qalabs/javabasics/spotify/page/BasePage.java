@@ -9,7 +9,5 @@ public class BasePage {
 
         this.driver = driver;
     }
-    public boolean isLoaded() {
-        return false;
-    }
+
 }
