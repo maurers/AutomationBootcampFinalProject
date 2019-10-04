@@ -14,7 +14,7 @@ public class SpotifyTest extends BaseTest {
 
         SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
-        Assert.assertEquals(spotifyHomePage.BASE_URL, page, "Cargo una pagina diferente");
+        Assert.assertNotEquals(spotifyHomePage.BASE_URL, page, "Las paginas son iguales, cuando deberian ser diferente");
     }
 
     @Test(description = "TC_US3_001 / Llenar campos de registros de obtén Spotify gratis se envían vacíos")
@@ -23,7 +23,7 @@ public class SpotifyTest extends BaseTest {
         String homePage = propertyReader.getProperty("credentials.properties", "SPOTIFY_PAGE");
         String signUpPage = propertyReader.getProperty("credentials.properties", "SPOTIFY_SIGNUP_PAGE");
 
-        this.myDriver.navigate().to(homePage);
+        //this.myDriver.navigate().to(homePage);
         SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertEquals(spotifyHomePage.BASE_URL, homePage, "Cargo una pagina diferente");
@@ -33,9 +33,19 @@ public class SpotifyTest extends BaseTest {
         Assert.assertTrue(spotifySignUpPage.isLoaded(), "Pagina registro no se cargo correctamente");
         spotifySignUpPage.spotifySignUpForm("", "", "", "", "", "", "");
         Assert.assertFalse(signUpPage.startsWith(spotifySignUpPage.BASE_URL));
-        
+
     }
 
+    @Test(description = "TC_US6_001 / Probar icono de spotify que redireccione a home page desde home page")
+    public void goToHomePage() {
+        PropertyReader propertyReader = new PropertyReader();
+        String homePage = propertyReader.getProperty("credentials.properties", "SPOTIFY_PAGE");
+
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
+        Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
+        Assert.assertEquals(spotifyHomePage.BASE_URL, homePage, "Cargo una pagina diferente");
+        spotifyHomePage.
+    }
 
 
 
