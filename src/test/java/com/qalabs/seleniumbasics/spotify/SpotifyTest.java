@@ -5,8 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.awt.*;
-
 public class SpotifyTest {
 
     private String spotifyUrl;
@@ -27,18 +25,18 @@ public class SpotifyTest {
         name=propertyReader.getProperty("credentials.properties", "USERNAME");
         pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
 
-        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
+        spotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
         sporifyLoginPage.spotifyLoginPage(name,pass);
 
         Assert.assertEquals( driver.getSpotifyLogin(), SpotifyLoginPage);
         Assert.assertTrue( false, "bad_credentials" );
     }
     @Test(description = "TC_US3_002/Campos de registro de obtén spotify gratis se envían llenos y sin validar captcha", alwaysRun = true, priority = 0)
-    public void spotifySignUpPage(){
-        String name;
+    public void spotifySignUp(){
         String email;
         String confirmEmail;
         String pass = "";
+        String name;
         String day = "";
         String month="";
         String year="";
@@ -46,16 +44,17 @@ public class SpotifyTest {
 
 
         PropertyReader propertyReader = new PropertyReader();
-        name=propertyReader.getProperty("credentials.properties", "USER_NAME");
         email=propertyReader.getProperty("credentials.properties", "EMAIL");
-        confirmEmail=propertyReader.getProperty("credentials.proeprties", "EMAIL");
+        confirmEmail=propertyReader.getProperty("credentials.properties", "EMAIL");
+        pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
+        name=propertyReader.getProperty("credentials.properties","NAME");
         day=propertyReader.getProperty("credentials.properties", "DAY");
         month=propertyReader.getProperty("credentials.properties","MONTH");
         year=propertyReader.getProperty("credentials.properties", "YEAR_VALID");
         gender=propertyReader.getPorperty("credentials.properties","GENDER");
 
-        SpotifySignUpPage spotifySingUpPage = new SpotifySingUpPage(driver);
-        SpotifySingUpPage.spotifySignUpPage(name,email,confirmEmail,pass,day,month,year,gender);
+        spotifySignUpForm spotifySingUpForm = new SpotifySingUpForm(driver);
+        spotifySingUpForm.spotifySignUpForm(email,confirmEmail,pass,name,day,month,year,gender);
 
         Assert.assertFalse( true, "Se solicita validacion captcha" );
 
