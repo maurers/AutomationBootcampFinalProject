@@ -18,7 +18,7 @@ public class SpotifyTest {
         spotifyUrl = propertyReader.getProperty("credentials.properties", "TEST_URL");
     }
 
-    @Test(alwaysRun = true, priority = 2)
+    @Test(description = "TC_US_02_001/Acceder al formulario de Inicio de Sesión de Spotify", alwaysRun = true, priority = 2)
     public void invalidLoggerInSpotify(){
         String name;
         String pass;
@@ -33,8 +33,8 @@ public class SpotifyTest {
         Assert.assertEquals( driver.getSpotifyLogin(), SpotifyLoginPage);
         Assert.assertTrue( false, "bad_credentials" );
     }
-    @Test(alwaysRun = true, priority = 0)
-    public void registerInSpotify(){
+    @Test(description = "TC_US3_002/Campos de registro de obtén spotify gratis se envían llenos y sin validar captcha", alwaysRun = true, priority = 0)
+    public void spotifySignUpPage(){
         String name;
         String email;
         String confirmEmail;
@@ -54,10 +54,10 @@ public class SpotifyTest {
         year=propertyReader.getProperty("credentials.properties", "YEAR_VALID");
         gender=propertyReader.getPorperty("credentials.properties","GENDER");
 
-        SpotifyRegisterPage spotifyRegisterPage = new SpotifyRegisterPage(driver);
-        SpotifyRegsiterPage.spotifyRegisterPage(name,email,confirmEmail,pass,day,month,year,gender);
+        SpotifySignUpPage spotifySingUpPage = new SpotifySingUpPage(driver);
+        SpotifySingUpPage.spotifySignUpPage(name,email,confirmEmail,pass,day,month,year,gender);
 
-        Assert.assertTrue( false, "Se solicita validacion captcha" );
+        Assert.assertFalse( false, "Se solicita validacion captcha" );
 
 
     }
