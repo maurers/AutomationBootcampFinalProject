@@ -25,6 +25,7 @@ public class SpotifyTest  extends BaseTest {
         String pass;
 
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(this.myDriver);
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this,myDriver);
 
         myDriver.navigate().to(spotifyUrl);
         //Assert.assertTrue(facebookLoginPage.isLoaded(), "Google results page is not loaded");
@@ -32,8 +33,8 @@ public class SpotifyTest  extends BaseTest {
 
 
         com.qalabs.seleniumbasics.utils.PropertyReader propertyReader= new PropertyReader();
-        name= propertyReader.getProperty("credentials.properties", "USSER_NAME");
-        pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
+        name= propertyReader.getProperty("credentials.properties", "TC_US2_003_USSER_NAME");
+        pass=propertyReader.getProperty("credentials.properties", "TC_US2_003_PASSWORD");
 
         //myDriver.navigate().to(spotifyLoginUrl);
         SpotifyHomePage.goToLoginPage();
@@ -41,6 +42,7 @@ public class SpotifyTest  extends BaseTest {
 
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(myDriver);
         SpotifyLoginPage.spotifyLoginForm(name,pass);
+        Assert.assertTrue(myDriver.getCurrentUrl().startsWith(spotifyLoginUrl),"No se realizo el login");
     }
 
     @Test(description = "TC_US4_002 / Formulario de Crear cuenta nueva no se envia por dia de nacimiento invalido")
@@ -53,13 +55,13 @@ public class SpotifyTest  extends BaseTest {
         String month= null;
         String gender= null;
         com.qalabs.seleniumbasics.utils.PropertyReader propertyReader= new PropertyReader();
-        name= propertyReader.getProperty("credentials.properties", "USSER_NAME");
-        pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
-        email=propertyReader.getProperty("credentials.properties", "EMAIL");
-        day=propertyReader.getProperty("credentials.properties", "DAY");
-        month=propertyReader.getProperty("credentials.properties", "MONTH");
-        year=propertyReader.getProperty("credentials.properties", "YEAR");
-        gender=propertyReader.getProperty("credentials.properties", "GENDER");
+        name= propertyReader.getProperty("credentials.properties", "TC_US4_002_USSER_NAME");
+        pass=propertyReader.getProperty("credentials.properties", "TC_US4_002_PASSWORD");
+        email=propertyReader.getProperty("credentials.properties", "TC_US4_002_EMAIL");
+        day=propertyReader.getProperty("credentials.properties", "TC_US4_002_DAY");
+        month=propertyReader.getProperty("credentials.properties", "TC_US4_002_MONTH");
+        year=propertyReader.getProperty("credentials.properties", "TC_US4_002_YEAR");
+        gender=propertyReader.getProperty("credentials.properties", "TC_US4_002_GENDER");
         SpotifySignUpPage spotifySignUpPage = new SpotifySignUpPage(this.myDriver);
 
         myDriver.navigate().to(spotifyUrl);
@@ -73,6 +75,7 @@ public class SpotifyTest  extends BaseTest {
 
 
         spotifySignUpPage.spotifySignUpform(name,pass,email,day,month,year,gender);
+        Assert.assertNotEquals(myDriver.getCurrentUrl(),SpotifySignUpPage.SPOTIFY_SIGNUP_URL);
     }
 
 
