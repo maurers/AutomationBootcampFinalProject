@@ -60,7 +60,7 @@ public class SpotifyTest extends BaseTest {
         Assert.assertTrue( false, "bad_credentials" );
     }
     
-    @Test(alwaysRun = true,description = "TC_US2_003/Acceder al formulario de Inicio de Sesión de Spotify")
+    @Test(alwaysRun = true,description = "TC_US2_002/Acceder al formulario de Inicio de Sesión de Spotify")
     public void validLoggerInSpotify(){
         String email;
         String pass;
