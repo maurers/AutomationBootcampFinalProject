@@ -36,7 +36,7 @@ public class SpotifyTest  extends BaseTest {
         SpotifyLoginPage.spotifyLoginForm(name,pass);
     }
 
-    @Test@Test(description = "TC_US4_002 / Formulario de Crear cuenta nueva no se envia por dia de nacimiento invalido")
+    @Test(description = "TC_US4_002 / Formulario de Crear cuenta nueva no se envia por dia de nacimiento invalido")
     public void loggerInSpotifySignUp() {
         String name= null;
         String pass = null;
