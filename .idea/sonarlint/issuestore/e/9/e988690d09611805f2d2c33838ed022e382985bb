@@ -1,7 +1,4 @@
 
-Zsquid:S1068"7Remove this unused "homeHeaderComponent" private field.(ÍÔ½¦ÿÿÿÿÿ8Æâ‘ŸÙ-
-Ssquid:S1068"5Remove this unused "homeBodyComponent" private field.(‘çìÿ8Æâ‘ŸÙ-
-qsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(¢ÎŠÍ8–³ŒŸÙ-
-Ksquid:S1068
-"(Remove this unused "wait" private field.(íÒá§ùÿÿÿÿ8’½‹ŸÙ-
-Usquid:S1135"2Complete the task associated to this TODO comment.(ò„¬Ùþÿÿÿÿ8€¾•ŸÙ-
+xsquid:UselessImportCheck	"MRemove this unused import 'org.openqa.selenium.support.ui.ExpectedCondition'.(Ü¥ö’8ðûÑÈÙ-
+qsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(¢ÎŠÍ8ðûÑÈÙ-
+Usquid:S1135N"2Complete the task associated to this TODO comment.(ò„¬Ùþÿÿÿÿ8ðûÑÈÙ-
