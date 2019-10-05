@@ -4,8 +4,8 @@
         <classes>
             <class name="com.qalabs.seleniumbasics.spotify.SpotifyTest">
                 <methods>
-                    <include name="openGoogle"/>
-                </methods>>
+                    <include name="passTC" />
+                </methods>
             </class>
         </classes>
     </test>
