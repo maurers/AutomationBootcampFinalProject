@@ -45,12 +45,6 @@ public class SpotifyTest  extends BaseTest {
         String year= null;
         String month= null;
         String gender= null;
-        SpotifySignUpPage spotifySignUpPage = new SpotifySignUpPage(this.myDriver);
-
-        myDriver.navigate().to(spotifySignUpUrl);
-        //Assert.assertTrue(facebookLoginPage.isLoaded(), "Google results page is not loaded");
-        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifySignUpPage.SPOTIFY_SIGNUP_URL);
-
         com.qalabs.seleniumbasics.utils.PropertyReader propertyReader= new PropertyReader();
         name= propertyReader.getProperty("credentials.properties", "USSER_NAME");
         pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
@@ -59,6 +53,13 @@ public class SpotifyTest  extends BaseTest {
         month=propertyReader.getProperty("credentials.properties", "MONTH");
         year=propertyReader.getProperty("credentials.properties", "YEAR");
         gender=propertyReader.getProperty("credentials.properties", "GENDER");
+        SpotifySignUpPage spotifySignUpPage = new SpotifySignUpPage(this.myDriver);
+
+        myDriver.navigate().to(spotifySignUpUrl);
+        //Assert.assertTrue(facebookLoginPage.isLoaded(), "Google results page is not loaded");
+        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifySignUpPage.SPOTIFY_SIGNUP_URL);
+
+
 
         spotifySignUpPage.spotifySignUpform(name,pass,email,day,month,year,gender);
     }
