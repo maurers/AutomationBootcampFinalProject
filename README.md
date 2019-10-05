@@ -20,7 +20,7 @@ Fecha: **30 de Septiembre 2019**
 
 ## Diagrama de clases y documentación
 
-![](https://es.trate.ga/Spotify.jpeg)
+![](https://es.trate.ga/Spotify-Diagram.jpeg)
 
 El diagrama de clases para nuestro framework está dividido en dos categorías, la primera son las clases enfocadas a las páginas y la segunda son los componentes que se derivan de la abstracción de cada una de las páginas.
 
@@ -40,10 +40,9 @@ La clase **BasePage** es una clase abstracta que contiene lo siguiente:
 - clickOnSpotifyIcon() = Método abstracto con el cual se dará click al logo para regresar a home y que retorna un valor de tipo SpotifyHomePage.
 
 ### SpotifyHomePage
-Clase es publica que extendiende BasePage.
+Clase es pública que extendiende BasePage.
 
 **Atributos:**
-- logoHomeLinkComponent: Instancia de la clase LogoHomeLinkComponent, que nos ayuda a acceder a los atributos y método de la misma.
 - homeHeaderComponent: Instancia de la clase HomeHeaderComponent la cual nos ayuda a acceder a los atributos y métodos de la misma.
 - homeBodyComponent: Instancia de la clase HomeBodyComponent la cual nos ayuda a acceder a los atributos y métodos de la misma.
 - wait: Es un atributo de tipo WebdriverWait el cual será utilizado para agregar un explicit wait en el método isLoaded.
@@ -59,10 +58,9 @@ Clase es publica que extendiende BasePage.
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
 ### SpotifyLoginPage
-Clase es publica que extendiende BasePage.
+Clase es pública que extendiende BasePage.
 
 **Atributos:**
-- logoHomeLinkComponent: Instancia de la clase LogoHomeLinkComponent, que nos ayuda a acceder a los atributos y método de la misma.
 - LoginConponent: Instancia de la clase LoginComponent, que nos ayuda para acceder a los atributos y métodos de la misma clase.
 - wait: Es un atributo de tipo WebdriverWait el cual será utilizado para agregar un explicit wait en el método isLoaded.
 - BASE_URL: Atributo static final de tipo String la cual contiene la URL de la página que estamos probando.
@@ -70,14 +68,13 @@ Clase es publica que extendiende BasePage.
 **Métodos:**
 - SpotifyLoginPage(driver:WebDriver) =  Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver
 - isLoaded() = Método que retorna un valor tipo booleano para determinar si la página Spotify esta desplegada o no.
-- spotifyLoginFrom() = Método para hacer Login una cuenta en Spotify, retorna un elemento de tipo SpotityLoginPage
+- spotifyLoginFrom(user:String, pass:String) = Método para hacer Login una cuenta en Spotify, retorna un elemento de tipo SpotityLoginPage
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
 ### SpotifySignUpPage
-Clase es publica que extendiende BasePage.
+Clase es pública que extendiende BasePage.
 
 **Atributos:**
-- logoHomeLinkComponent: este es el link que redirecciona a la pagina principal de la plataforma.
 - singUpComponent: este es el componente que genera el formulario de registro del usuario a la pagina.
 - wait: Es un atributo de tipo WebdriverWait el cual será utilizado para agregar un explicit wait en el método isLoaded.
 - BASE_URL: atributo static final de tipo String la cual contiene la URL de la página que estamos probando.
@@ -85,14 +82,13 @@ Clase es publica que extendiende BasePage.
 **Metodos:**
 - SpotifySingUpPage(driver:WebDriver) = Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver.
 - isLoad() = Este método se utiliza para identificar que la página se ha cargado.
-- spotifySingUpForm(): SpotifySignUpPage = En este metodo se generan los campos a ser llenados por el usuario con sus credenciales.
+- spotifySingUpForm(email:String, pass:String, name:String, year:String, gender:char) = SpotifySignUpPage = En este metodo se generan los campos a ser llenados por el usuario con sus credenciales.
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
 ### SpotifyHelpPage
-Clase es publica que extendiende BasePage.
+Clase es pública que extendiende BasePage.
 
 **Atributos:**
-- logoHomeLinkComponent: este es el link que redirecciona a la página principal de la plataforma
 - wait: Es un atributo de tipo WebdriverWait el cual será utilizado para agregar un explicit wait en el método isLoaded.
 - BASE_URL: atributo static final de tipo String la cual contiene la URL de la página que estamos probando.
 
@@ -104,7 +100,7 @@ Clase es publica que extendiende BasePage.
 ## Clases de Componentes
 
 ### SpotifyComponent
-Clase es publica
+Clase es pública
 
 **Atributos:**
 - driver: Genera una instancia del WebDriver.
@@ -113,7 +109,7 @@ Clase es publica
 - SpotifyComponent() = Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver.
 
 ### HomeHeaderComponent
-Clase es publica que extendiende SpotifyComponent.
+Clase es pública que extendiende SpotifyComponent.
 
 **Atributos:**
 - loginButton: WebElement del botón para que redirecciona al usuario a la página de incio de sesión.
@@ -127,7 +123,7 @@ Clase es publica que extendiende SpotifyComponent.
 - clickHelpButton() = Este método para obtener ayuda de la plataforma.
 
 ### LoginComponent
-Clase es publica que extendiende SpotifyComponent.
+Clase es pública que extendiende SpotifyComponent.
 
 **Atributos:**
 - emailInput: WebElement del campo para ingresar la dirección de usuario.
@@ -136,10 +132,10 @@ Clase es publica que extendiende SpotifyComponent.
 
 **Metodos:**
 - LoginAccount(driver:WebDriver) = Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver.
-- LoginComponent() = Método para iniciar sesión.
+- LoginComponent(user:String, pass:String) = Método para iniciar sesión.
 
 ### HomeBodyComponent
-Clase es publica que extendiende SpotifyComponent.
+Clase es pública que extendiende SpotifyComponent.
 
 **Atributos:**
 - getSpotifyButton: WebElement para navegar a la pagina de registro de la plataforma.
@@ -149,7 +145,7 @@ Clase es publica que extendiende SpotifyComponent.
 - clickOnGetSpotifyButton() = Este método te redirecciona a SpotifySignUpPage.
 
 ### SignUpComponent
-Clase es publica que extendiende SpotifyComponent.
+Clase es pública que extendiende SpotifyComponent.
 
 **Atributos:**
 - emailInput: WebElement del campo para ingresar la dirección de email del usuario.
@@ -166,4 +162,4 @@ Clase es publica que extendiende SpotifyComponent.
 
 **Métodos:**
 - SingUpComponent(driver:WebDriver) = Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver.
-- signUpAccount() = Método para generar un nuevo registro.
+- signUpAccount(email:String, pass:String, name:String, year:String, gender:char) = Método para generar un nuevo registro.
