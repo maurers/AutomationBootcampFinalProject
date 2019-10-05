@@ -7,14 +7,16 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class SpotifyTest  extends BaseTest {
-    private String spotifyUrl;
-    private String spotifySignUpUrl;
+    private String spotifyUrl = null;
+    private String spotifySignUpUrl= null;
+    private String spotifyLoginUrl = null
 
     @BeforeTest
     public void initSetup(){
         com.qalabs.seleniumbasics.utils.PropertyReader propertyReader= new com.qalabs.seleniumbasics.utils.PropertyReader();
         spotifyUrl= propertyReader.getProperty("credentials.properties", "SPOTIFY_URL");
-        spotifyUrl= propertyReader.getProperty("credentials.properties", "SPOTIFY_SIGNUP_URL");
+        spotifySignUpUrl= propertyReader.getProperty("credentials.properties", "SPOTIFY_SIGNUP_URL");
+        spotifyLoginUrl = propertyReader.getProperty("credentials.properties", "SPOTIFY_LOGIN_URL");
     }
 
     @Test(description = "TC_US2_003 / Acceder al formulario de Inicio de Sesión de Spotify")
@@ -26,11 +28,16 @@ public class SpotifyTest  extends BaseTest {
 
         myDriver.navigate().to(spotifyUrl);
         //Assert.assertTrue(facebookLoginPage.isLoaded(), "Google results page is not loaded");
-        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifyLoginPage.BASE_URL);
+        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifyHomePage.BASE_URL);
+
 
         com.qalabs.seleniumbasics.utils.PropertyReader propertyReader= new PropertyReader();
         name= propertyReader.getProperty("credentials.properties", "USSER_NAME");
         pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
+
+        //myDriver.navigate().to(spotifyLoginUrl);
+        SpotifyHomePage.goToLoginPage();
+        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifyLoginPage.LOGIN_URL);
 
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(myDriver);
         SpotifyLoginPage.spotifyLoginForm(name,pass);
@@ -55,7 +62,11 @@ public class SpotifyTest  extends BaseTest {
         gender=propertyReader.getProperty("credentials.properties", "GENDER");
         SpotifySignUpPage spotifySignUpPage = new SpotifySignUpPage(this.myDriver);
 
-        myDriver.navigate().to(spotifySignUpUrl);
+        myDriver.navigate().to(spotifyUrl);
+        //Assert.assertTrue(facebookLoginPage.isLoaded(), "Google results page is not loaded");
+        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifyHomePage.BASE_URL);
+
+        SpotifyHomePage.goToSignUpPage();
         //Assert.assertTrue(facebookLoginPage.isLoaded(), "Google results page is not loaded");
         Assert.assertEquals(myDriver.getCurrentUrl(), SpotifySignUpPage.SPOTIFY_SIGNUP_URL);
 
