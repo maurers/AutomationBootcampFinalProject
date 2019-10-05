@@ -23,7 +23,6 @@ public class SpotifyHelpPage extends BasePage {
 
     public SpotifyHelpPage(WebDriver driver) {
         super(driver);
-
         wait = new WebDriverWait(driver, 5);
     }
 
@@ -36,7 +35,6 @@ public class SpotifyHelpPage extends BasePage {
             return false;
         }
     }
-
     // ToDO: Implement this method
     public SpotifyHomePage clickOnSpotifyIcon() {
         if(spIconLogo.isDisplayed()) {
