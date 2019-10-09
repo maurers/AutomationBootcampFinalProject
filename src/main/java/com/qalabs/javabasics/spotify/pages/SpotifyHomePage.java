@@ -19,7 +19,7 @@ public class SpotifyHomePage extends BasePage {
     private HomeHeaderComponent homeHeaderComponent;
     private HomeBodyComponent homeBodyComponent;
 
-    public final static String BASE_URL = "";
+    public final static String BASE_URL = "https://www.spotify.com/mx/";
 
     // Elements
 
