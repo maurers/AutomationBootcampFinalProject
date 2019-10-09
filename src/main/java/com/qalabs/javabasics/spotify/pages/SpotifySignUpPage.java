@@ -7,6 +7,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class SpotifySignUpPage extends BasePage {
 
     private WebDriverWait wait;
@@ -39,7 +41,11 @@ public class SpotifySignUpPage extends BasePage {
     private WebElement nameInput;
 
     @FindBy(how = How.ID, using = "register-dob-month")
-    private WebElement monthDropdown;
+    List<WebElement> Options = monthDropdown.getOption();
+        for (WebElement option:Options){
+
+
+    }
 
     @FindBy(how = How.ID, using = "")
     private WebElement monthSelect;
@@ -50,8 +56,8 @@ public class SpotifySignUpPage extends BasePage {
     @FindBy(how = How.ID, using = "register-dob-year")
     private WebElement yearInput;
 
-    @FindBy(how = How.ID, using = "")
-    private WebElement genderRadioButtons;
+    @FindBy(how = How.XPATH, using = "//input[@type='radio']")
+    private List<WebElement> genderRadioButtons;
 
     @FindBy(how = How.ID, using = "register-thirdparty")
     private WebElement ShareCheckBox;
@@ -71,6 +77,23 @@ public class SpotifySignUpPage extends BasePage {
         this.confirmEmailInput.sendKeys(email);
         return null;
     }
-    
+
+    public SpotifySignUpPage passInput(String pass){
+        this.passInput.sendKeys(pass);
+        return null;
+    }
+
+    public SpotifySignUpPage nameInput(String name){
+        this.nameInput.sendKeys(name);
+        return null;
+    }
+    public SpotifySignUpPage shareCheckBox(boolean shareCheckBox){
+        this.shareCheckBox.isSelected();
+        return boolean
+    }
+    public SpotifySignUpPage signUpButton(){
+        this.signUpButton.click();
+    }
+    }
 
 }
