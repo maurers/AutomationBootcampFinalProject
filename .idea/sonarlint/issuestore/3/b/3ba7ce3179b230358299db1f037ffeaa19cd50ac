@@ -1,6 +1,6 @@
 
-qsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(¢ÎŠÍ8ÖÁÛÙ-
 Usquid:S1135"2Complete the task associated to this TODO comment.(ò„¬Ùşÿÿÿÿ8ÖÁÛÙ-
-Ksquid:S1068	"(Remove this unused "wait" private field.(íÒá§ùÿÿÿÿ8ƒ¶Ù-
 Vsquid:S1068
 "3Remove this unused "signUpComponent" private field.(ÂôÊõûÿÿÿÿ8úøÛÙ-
+Ksquid:S1068	"(Remove this unused "wait" private field.(íÒá§ùÿÿÿÿ8ƒ¶Ù-
+qsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(¢ÎŠÍ8ÖÁÛÙ-
