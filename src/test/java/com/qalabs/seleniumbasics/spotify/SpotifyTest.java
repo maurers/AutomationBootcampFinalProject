@@ -1,6 +1,7 @@
 package com.qalabs.seleniumbasics.spotify;
 import com.qalabs.seleniumbasics.utils.PropertyReader;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
