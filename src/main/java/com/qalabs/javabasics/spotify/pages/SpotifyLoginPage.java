@@ -2,14 +2,25 @@ package com.qalabs.javabasics.spotify.pages;
 
 import com.qalabs.javabasics.spotify.components.login.LoginComponent;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SpotifyLoginPage extends BasePage {
+    //Attributes
 
     private WebDriverWait wait;
     private LoginComponent loginComponent;
+    public final static String BASE_URL = "https://accounts.spotify.com/es/login/";
 
-    public final static String BASE_URL = "";
+    // Elements
+
+    @FindBy(how = How.CLASS_NAME, using = "spotify-logo")
+    private WebElement spotifyLogoElement;
+
+    //Constructor
 
     public SpotifyLoginPage(WebDriver driver) {
         super(driver);
@@ -18,8 +29,26 @@ public class SpotifyLoginPage extends BasePage {
         this.loginComponent = new LoginComponent(driver);
     }
 
+    //Actions
+
+    public SpotifyLoginPage spotifyLoginForm (String user, String pass) {
+        return this.loginComponent.loginAccount(user,pass);
+    }
+
     // ToDO: Implement this method
     public SpotifyHomePage clickOnSpotifyIcon() {
-        return null;
+        this.spotifyLogoElement.click();
+        return new SpotifyHomePage(this.driver);
+    }
+
+    @Override
+    public boolean isLoaded() {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(loginComponent.getLoginButton()));
+            return true;
+        } catch (RuntimeException exception) {
+            return false;
+        }
     }
 }
+
