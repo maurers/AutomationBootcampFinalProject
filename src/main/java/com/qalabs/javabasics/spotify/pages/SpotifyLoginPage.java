@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SpotifyLoginPage extends BasePage {
 
+    public static final String LOGIN_URL = ;
     private WebDriverWait wait;
     private LoginComponent loginComponent;
 
@@ -16,6 +17,9 @@ public class SpotifyLoginPage extends BasePage {
 
         wait = new WebDriverWait(driver, 5);
         this.loginComponent = new LoginComponent(driver);
+    }
+
+    public static void spotifyLoginForm(String name, String pass) {
     }
 
     // ToDO: Implement this method

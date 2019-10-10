@@ -81,4 +81,8 @@ public class SpotifyHomePage extends BasePage {
 
         return new SpotifyHomePage(this.driver);
     }
+
+    public spotifyLoginPageFrom() {
+        super();
+    }
 }

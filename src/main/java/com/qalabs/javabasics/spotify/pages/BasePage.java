@@ -13,6 +13,10 @@ public abstract class BasePage implements Page {
         PageFactory.initElements(driver, this);
     }
 
+    public BasePage() {
+        super();
+    }
+
     public void open() {
         return;
     }

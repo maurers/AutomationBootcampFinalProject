@@ -1,8 +1,14 @@
 package com.qalabs.seleniumbasics.spotify;
+import com.qalabs.javabasics.spotify.pages.SpotifyHelpPage;
+import com.qalabs.javabasics.spotify.pages.SpotifyHomePage;
+import com.qalabs.javabasics.spotify.pages.SpotifyLoginPage;
+import com.qalabs.javabasics.spotify.pages.SpotifySignUpPage;
 import com.qalabs.seleniumbasics.utils.PropertyReader;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import java.util.Properties;
 
 
 public class SpotifyTest extends BaseTest {
@@ -72,6 +78,7 @@ public class SpotifyTest extends BaseTest {
         pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
         pageLogin=propertyReader.getProperty("credentials.properties", "URL_LOGIN_PAGE");
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(myDriver);
+        SpotifyHomePage sporifyLoginPage = null;
         sporifyLoginPage.spotifyLoginPageFrom(email,pass);
         Assert.assertTrue(sporifyLoginPage.isLoaded(), "The page is not loaded");
         Assert.assertFalse(page.startsWith(myDriver.getCurrentUrl()));
@@ -81,8 +88,9 @@ public class SpotifyTest extends BaseTest {
     public void loggerInSpotify() {
         String name;
         String pass;
-      
-        String spotifySignUpUrl= propertyReader.getProperty("credentials.properties", "SPOTIFY_SIGNUP_URL");
+
+      Properties propertyReader;
+      String spotifySignUpUrl= propertyReader.getProperty("credentials.properties", "SPOTIFY_SIGNUP_URL");
       
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(this.myDriver);
         SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this,myDriver);
@@ -103,8 +111,7 @@ public class SpotifyTest extends BaseTest {
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(myDriver);
         SpotifyLoginPage.spotifyLoginForm(name,pass);
         Assert.assertTrue(myDriver.getCurrentUrl().startsWith(spotifyLoginUrl),"No se realizo el login");
-    }
-  
+
     @Test(description = "TC_US2_004/Acceder al formulario de Inicio de Sesión de Spotify ")
     public void LoginSpotifyCheck(){
         //this.myDriver.navigate().to(spotifyUrl);
