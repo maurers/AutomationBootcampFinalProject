@@ -8,6 +8,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class SpotifyLoginPage extends BasePage {
     //Attributes
 
@@ -39,6 +41,12 @@ public class SpotifyLoginPage extends BasePage {
     public SpotifyHomePage clickOnSpotifyIcon() {
         this.spotifyLogoElement.click();
         return new SpotifyHomePage(this.driver);
+    }
+
+    public void clickOnLoginButton() { this.loginComponent.clickOnLoginButton(); }
+
+    public List<String> validateSpotifyLoginForm(String email, String pass) {
+        return this.loginComponent.validateSpotifyLoginForm(email,pass);
     }
 
     @Override
