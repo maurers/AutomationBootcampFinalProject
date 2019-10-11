@@ -14,7 +14,6 @@ public class SpotifyHelpPage extends BasePage {
     // Attributes
 
     private WebDriverWait wait;
-
     public final static String BASE_URL = "https://support.spotify.com/mx/?_ga=2.47006823.1304134064.1570227736-386534741.1570227736";
 
     // Elements
