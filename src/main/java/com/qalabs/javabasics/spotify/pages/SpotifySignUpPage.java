@@ -28,7 +28,6 @@ public class SpotifySignUpPage extends BasePage {
 
     public SpotifySignUpPage(WebDriver driver) {
         super(driver);
-
         wait = new WebDriverWait(driver, 5);
         this.signUpComponent = new SignUpComponent(driver);
     }
@@ -36,9 +35,9 @@ public class SpotifySignUpPage extends BasePage {
     // Actions
 
     public boolean isLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(this.signUpComponent.getEmailInputElement()));
-
         try {
+            wait.until(ExpectedConditions.visibilityOf(this.signUpComponent.getEmailInputElement()));
+
             return this.signUpComponent.getEmailInputElement().isDisplayed();
         } catch(Exception ex) {
             Log.error(ex.toString());

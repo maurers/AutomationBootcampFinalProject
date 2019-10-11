@@ -29,16 +29,15 @@ public class SpotifyHelpPage extends BasePage {
 
     public SpotifyHelpPage(WebDriver driver) {
         super(driver);
-
         wait = new WebDriverWait(driver, 5);
     }
 
     // Actions
 
     public boolean isLoaded() {
-        wait.until(elementToBeClickable(spHelpElement));
-
         try {
+            wait.until(elementToBeClickable(spHelpElement));
+
             return this.spHelpElement.isDisplayed();
         } catch(RuntimeException ex) {
             Log.error(ex.toString());

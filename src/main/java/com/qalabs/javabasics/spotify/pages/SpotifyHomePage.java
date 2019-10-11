@@ -29,7 +29,6 @@ public class SpotifyHomePage extends BasePage {
 
     public SpotifyHomePage(WebDriver driver) {
         super(driver);
-
         wait = new WebDriverWait(driver, 5);
         this.homeHeaderComponent = new HomeHeaderComponent(driver);
         this.homeBodyComponent = new HomeBodyComponent(driver);
@@ -39,9 +38,9 @@ public class SpotifyHomePage extends BasePage {
 
     @Override
     public boolean isLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(this.homeHeaderComponent.getLoginButtonElement()));
-
         try {
+            wait.until(ExpectedConditions.visibilityOf(this.homeHeaderComponent.getLoginButtonElement()));
+
             return this.homeHeaderComponent.getLoginButtonElement().isDisplayed();
         } catch(Exception ex) {
             Log.error(ex.toString());
