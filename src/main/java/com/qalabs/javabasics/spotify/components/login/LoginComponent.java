@@ -56,6 +56,11 @@ public class LoginComponent extends SpotifyComponent {
 
     public void clickOnLoginButton() { loginButton.click(); }
 
+    /*
+    Dude, add more validations in this method. The yellow error alert appears when
+    you try to attempt a login with invalid credentials.
+    There is another yellow error alert related to the request, catch it
+     */
     public List<String> validateSpotifyLoginForm(String email, String pass) {
         List<String> errors = null;
 
@@ -63,7 +68,7 @@ public class LoginComponent extends SpotifyComponent {
             errors = new ArrayList<String>() {{
                 add(getEmailErrorMessageElement().getText());
                 add(getPasswordErrorMessageElement().getText());
-                add(getUserAndPassErrorMessageXPathLocator().getText());
+                //add(getUserAndPassErrorMessageXPathLocator().getText());
             }};
         }
 
@@ -83,5 +88,4 @@ public class LoginComponent extends SpotifyComponent {
     private WebElement getUserAndPassErrorMessageXPathLocator() {
         return driver.findElement(By.xpath(userAndPassErrorMessageXPathLocator));
     }
-
 }
