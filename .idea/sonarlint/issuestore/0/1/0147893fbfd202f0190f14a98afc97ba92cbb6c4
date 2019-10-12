@@ -1,0 +1,21 @@
+
+†squid:S1450("cRemove the "monthDropdownElement" field and declare it as a local variable in the relevant methods.(ϋµθνώÿÿÿÿ8ζ‚ήΫ-
+}squid:S1171›"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
+}squid:S1171©"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8¶Ά³ζΫ-
+~squid:S1450)"[Remove the "monthOptions" field and declare it as a local variable in the relevant methods.(ε§ÿΪωÿÿÿÿ8ζ‚ήΫ-
+_squid:UselessImportCheck"4Remove this unused import 'java.util.regex.Matcher'.(λΕ›γ8ζ‚ήΫ-
+dsquid:UselessImportCheck"4Remove this unused import 'java.util.regex.Pattern'.(Γ•…Δϊÿÿÿÿ8ζ‚ήΫ-
+Psquid:S3599",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
+Psquid:S3599©",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8¶Ά³ζΫ-
+}squid:S1171•"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
+}squid:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
+~squid:UselessImportCheck
+"NRemove this unused import 'org.openqa.selenium.support.ui.ExpectedConditions'.(ϋ€Θιϊÿÿÿÿ8ζ‚ήΫ-
+†squid:S1157l"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(μ»›Ψÿÿÿÿÿ8ζ‚ήΫ-
+Psquid:S3599Έ",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ƒ΅—ζΫ-
+Nsquid:S1066¨"/Merge this if statement with the enclosing one.(έ΄φΔ8¶Ά³ζΫ-
+ssquid:S2068<"V'password' detected in this expression, review this potentially hard-coded credential.(ΝΪ¶/8ζ‚ήΫ-
+Psquid:S3599›",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
+Ksquid:S1068"(Remove this unused "wait" private field.(νÒα§ωÿÿÿÿ8ζ‚ήΫ-
+Psquid:S3599•",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
+}squid:S1171Έ"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ƒ΅—ζΫ-

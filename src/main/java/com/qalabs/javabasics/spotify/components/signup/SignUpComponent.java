@@ -87,89 +87,124 @@ public class SignUpComponent extends SpotifyComponent {
     // Actions
 
     public void fillSpotifySignUpForm(String email, String pass, String name, String month, String day, String year, String gender) {
+        wait.until(ExpectedConditions.visibilityOf(emailInput));
         emailInput.clear();
         emailInput.sendKeys(email);
 
+        wait.until(ExpectedConditions.visibilityOf(confirmEmailInput));
         confirmEmailInput.clear();
         confirmEmailInput.sendKeys(email);
 
+        wait.until(ExpectedConditions.visibilityOf(passInput));
         passInput.clear();
         passInput.sendKeys(pass);
 
+        wait.until(ExpectedConditions.visibilityOf(nameInput));
         nameInput.clear();
         nameInput.sendKeys(name);
 
+        wait.until(ExpectedConditions.visibilityOf(dayInput));
         dayInput.clear();
         dayInput.sendKeys(day);
 
+        setMonth(month);
+
+        wait.until(ExpectedConditions.visibilityOf(yearInput));
+        yearInput.clear();
+        yearInput.sendKeys(year);
+
+        setGender(gender);
+
+        wait.until(ExpectedConditions.visibilityOf(shareCheckbox));
+        shareCheckbox.click();
+    }
+
+    private void setMonth(String month) {
+        wait.until(ExpectedConditions.visibilityOf(monthDropdown));
         monthDropdownElement = new Select(monthDropdown);
         monthOptions = monthDropdownElement.getOptions();
         for (WebElement item : monthOptions) {
             if(item.getText().toLowerCase().equals(month.toLowerCase())) {
-                monthDropdownElement.selectByVisibleText(month);
+                monthDropdownElement.selectByVisibleText(month.toLowerCase());
             }
         }
+    }
 
-        yearInput.clear();
-        yearInput.sendKeys(year);
-
+    private void setGender(String gender) {
+        wait.until(ExpectedConditions.visibilityOfAllElements(genderRadioButtons));
         for (WebElement item : genderRadioButtons) {
-            item.clear();
-            if(item.getAttribute("value").equals(gender)) {
+            if(item.getAttribute("value").equals(gender.toLowerCase())) {
                 item.click();
             }
         }
-
-        shareCheckbox.clear();
-        shareCheckbox.click();
     }
 
     public void clickOnRegistrateButton() {
+        wait.until(ExpectedConditions.visibilityOf(signUpButton));
         signUpButton.click();
     }
 
-    public List<String> validateSpotifySignUpEmptyForm(String email, String pass, String name, String month, String day, String year, String gender) {
+    public List<String> getSpotifySignUpEmptyFormErrors() {
         List<String> errors = null;
-        
-        if(Strings.isNullOrEmpty(email) && Strings.isNullOrEmpty(pass) && Strings.isNullOrEmpty(name) && Strings.isNullOrEmpty(month)
-                && Strings.isNullOrEmpty(day) && Strings.isNullOrEmpty(year) && Strings.isNullOrEmpty(gender)) {
+
+        wait.until(ExpectedConditions.visibilityOf(getEmailErrorMessageElement()));
+        if(getEmailErrorMessageElement().getText().length() > 0) {
             errors = new ArrayList<String>() {{
                 add(getEmailErrorMessageElement().getText());
-                add(getConfirmEmailErrorMessageElement().getText());
-                add(getPasswordErrorMessageElement().getText());
-                add(getNameErrorMessageElement().getText());
-                add(getDayErrorMessageElement().getText());
-                add(getMonthErrorMessageElement().getText());
-                add(getYearErrorMessageElement().getText());
-                add(getGenderErrorMessageElement().getText());
-                add(getCaptchaErrorMessageElement().getText());
             }};
         }
 
-        return errors;
-    }
-
-    public List<String> validateSpotifySignUpInvalidDayForm(String email, String pass, String name, String month, String day, String year, String gender) {
-        List<String> errors = null;
-
-        if(!Strings.isNullOrEmpty(email) && !Strings.isNullOrEmpty(pass) && !Strings.isNullOrEmpty(name) && !Strings.isNullOrEmpty(month)
-                && !Strings.isNullOrEmpty(day) && !Strings.isNullOrEmpty(year) && !Strings.isNullOrEmpty(gender)) {
-            if((isInteger(day) && (Integer.parseInt(day) <= 0 || Integer.parseInt(day) > 31)) || !isInteger(day)) {
-                errors = new ArrayList<String>() {{
-                    add(getDayErrorMessageElement().getText());
-                    add(getCaptchaErrorMessageElement().getText());
-                }};
-            }
+        wait.until(ExpectedConditions.visibilityOf(getConfirmEmailErrorMessageElement()));
+        if(getConfirmEmailErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getConfirmEmailErrorMessageElement().getText());
+            }};
         }
 
-        return errors;
-    }
+        wait.until(ExpectedConditions.visibilityOf(getPasswordErrorMessageElement()));
+        if(getPasswordErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getPasswordErrorMessageElement().getText());
+            }};
+        }
 
-    public List<String> validateSpotifySignUpValidForm(String email, String pass, String name, String month, String day, String year, String gender) {
-        List<String> errors = null;
+        wait.until(ExpectedConditions.visibilityOf(getNameErrorMessageElement()));
+        if(getNameErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getNameErrorMessageElement().getText());
+            }};
+        }
 
-        if(!Strings.isNullOrEmpty(email) && !Strings.isNullOrEmpty(pass) && !Strings.isNullOrEmpty(name) && !Strings.isNullOrEmpty(month)
-                && !Strings.isNullOrEmpty(day) && !Strings.isNullOrEmpty(year) && !Strings.isNullOrEmpty(gender)) {
+        wait.until(ExpectedConditions.visibilityOf(getDayErrorMessageElement()));
+        if(getDayErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getDayErrorMessageElement().getText());
+            }};
+        }
+
+        wait.until(ExpectedConditions.visibilityOf(getMonthErrorMessageElement()));
+        if(getMonthErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getMonthErrorMessageElement().getText());
+            }};
+        }
+
+        wait.until(ExpectedConditions.visibilityOf(getYearErrorMessageElement()));
+        if(getYearErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getYearErrorMessageElement().getText());
+            }};
+        }
+
+        wait.until(ExpectedConditions.visibilityOf(getGenderErrorMessageElement()));
+        if(getGenderErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getGenderErrorMessageElement().getText());
+            }};
+        }
+
+        wait.until(ExpectedConditions.visibilityOf(getCaptchaErrorMessageElement()));
+        if(getCaptchaErrorMessageElement().getText().length() > 0) {
             errors = new ArrayList<String>() {{
                 add(getCaptchaErrorMessageElement().getText());
             }};
@@ -178,28 +213,46 @@ public class SignUpComponent extends SpotifyComponent {
         return errors;
     }
 
-    public boolean isInteger(String str) {
-        if (str == null) {
-            return false;
+    public List<String> getSpotifySignUpInvalidDayFormErrors() {
+        List<String> errors = null;
+
+        if(getEmailErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getEmailErrorMessageElement().getText());       // I added this line in case if email was already registered
+            }};
         }
-        int length = str.length();
-        if (length == 0) {
-            return false;
+
+        if(getDayErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getDayErrorMessageElement().getText());
+            }};
         }
-        int i = 0;
-        if (str.charAt(0) == '-') {
-            if (length == 1) {
-                return false;
-            }
-            i = 1;
+
+        if(getCaptchaErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getCaptchaErrorMessageElement().getText());
+            }};
         }
-        for (; i < length; i++) {
-            char c = str.charAt(i);
-            if (c < '0' || c > '9') {
-                return false;
-            }
+
+        return errors;
+    }
+
+    public List<String> getSpotifySignUpValidFormCaptchaError() {
+        List<String> errors = null;
+
+        if(getEmailErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getEmailErrorMessageElement().getText());       // I added this line in case if email was already registered
+            }};
         }
-        return true;
+
+        if(getCaptchaErrorMessageElement().getText().length() > 0) {
+            errors = new ArrayList<String>() {{
+                add(getCaptchaErrorMessageElement().getText());
+            }};
+        }
+
+        return errors;
     }
 
     // Setting dynamic elements

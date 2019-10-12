@@ -28,3 +28,5 @@ v
 Fsrc/main/java/com/qalabs/javabasics/spotify/pages/SpotifyHelpPage.java,0/0/00a5c8344c109eda4f04778174fd3901d537b405
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
+m
+=src/test/java/com/qalabs/seleniumbasics/spotify/BaseTest.java,e/e/eefcdd73cfd9154d5a4210ab2d0a1ba76c86898b
