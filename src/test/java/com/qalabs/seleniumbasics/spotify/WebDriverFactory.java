@@ -12,7 +12,7 @@ public class WebDriverFactory {
     public static WebDriver getDriver(String browser) {
         File rootPath = new File("src/test/resources/lib-thirdparty/driversforwin");
         if(browser.toLowerCase().equals("chrome")) {
-            File chromeFilePath = new File(rootPath, "chromedriver");
+            File chromeFilePath = new File(rootPath, "chromedriver.exe");
             ChromeOptions options = new ChromeOptions();
 
             options.addArguments("--disable-notifications");

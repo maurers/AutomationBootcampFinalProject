@@ -17,10 +17,10 @@ public class SpotifyOverviewUserAccountPage extends BasePage {
 
     private WebDriverWait wait;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(@class, 'mh-brand-wrapper')]/a[@href= 'https://www.spotify.com/mx/']")
-    private WebElement spotifyLogoElement;
+    @FindBy(how = How.XPATH, using = "//button[@ng-click='logout()']")
+    private WebElement logoutButton;
 
-    public static final String BASE_URL = "https://www.spotify.com/mx/account/overview/";
+    public static final String BASE_URL = "https://accounts.spotify.com/es/status/";
 
     public SpotifyOverviewUserAccountPage(WebDriver driver) {
         super(driver);
@@ -35,9 +35,9 @@ public class SpotifyOverviewUserAccountPage extends BasePage {
     @Override
     public boolean isLoaded() {
         try {
-            wait.until(ExpectedConditions.visibilityOf(spotifyLogoElement));
+            wait.until(ExpectedConditions.visibilityOf(logoutButton));
 
-            return spotifyLogoElement.isDisplayed();
+            return logoutButton.isDisplayed();
         } catch (Exception ex) {
             Log.error(ex.toString());
 

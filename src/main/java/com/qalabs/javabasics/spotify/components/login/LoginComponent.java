@@ -61,7 +61,7 @@ public class LoginComponent extends SpotifyComponent {
     you try to attempt a login with invalid credentials.
     There is another yellow error alert related to the request, catch it
      */
-    public List<String> validateSpotifyLoginForm(String email, String pass) {
+    /*public List<String> validateSpotifyLoginForm(String email, String pass) {
         List<String> errors = null;
 
         if(Strings.isNullOrEmpty(email) && Strings.isNullOrEmpty(pass)) {
@@ -71,6 +71,25 @@ public class LoginComponent extends SpotifyComponent {
                 //add(getUserAndPassErrorMessageXPathLocator().getText());
             }};
         }
+
+        return errors;
+    }*/
+
+    public List<String> validateSpotifyLoginForm(String email, String pass) {
+        List<String> errors = new ArrayList<String>();
+
+        if(Strings.isNullOrEmpty(email))
+            errors.add(getEmailErrorMessageElement().getText());
+
+        if(Strings.isNullOrEmpty(pass))
+            errors.add(getPasswordErrorMessageElement().getText());
+
+        if(email.contains("'") || email.contains("\"") || email.contains("´") || email.contains("%") ||
+                email.contains("&") || email.contains(":"))
+            errors.add(getEmailErrorMessageElement().getText());
+
+        if(errors.isEmpty())
+            errors = null;
 
         return errors;
     }

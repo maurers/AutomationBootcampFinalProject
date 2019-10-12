@@ -23,10 +23,10 @@ public class LoginTests extends BaseTest {
 
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(this.driver);
         Assert.assertTrue(spotifyLoginPage.isLoaded());
-        spotifyLoginPage.spotifyLoginForm("your@awesome.email.com", "YouR4weSomePassW0rd");
+        spotifyLoginPage.spotifyLoginForm("JesusD84", "Negativo084");
         spotifyLoginPage.clickOnLoginButton();
 
-        List<String> listOfErrors = spotifyLoginPage.validateSpotifyLoginForm("3ncifuentesg@gmail.com", "In the end 12");
+        List<String> listOfErrors = spotifyLoginPage.validateSpotifyLoginForm("JesusD84", "Negativo084");
         Assert.assertTrue(listOfErrors == null);
 
         SpotifyOverviewUserAccountPage spotifyOverviewUserAccountPage = new SpotifyOverviewUserAccountPage(this.driver);
