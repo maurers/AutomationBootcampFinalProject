@@ -128,7 +128,7 @@ public class SignUpComponent extends SpotifyComponent {
         signUpButton.click();
     }
 
-    public List<String> validateSpotifySignUpForm(String email, String pass, String name, String month, String day, String year, String gender) {
+    public List<String> validateSpotifySignUpEmptyForm(String email, String pass, String name, String month, String day, String year, String gender) {
         List<String> errors = null;
         
         if(Strings.isNullOrEmpty(email) && Strings.isNullOrEmpty(pass) && Strings.isNullOrEmpty(name) && Strings.isNullOrEmpty(month)
@@ -144,14 +144,32 @@ public class SignUpComponent extends SpotifyComponent {
                 add(getGenderErrorMessageElement().getText());
                 add(getCaptchaErrorMessageElement().getText());
             }};
-        } else if(!Strings.isNullOrEmpty(day)) {
+        }
+
+        return errors;
+    }
+
+    public List<String> validateSpotifySignUpInvalidDayForm(String email, String pass, String name, String month, String day, String year, String gender) {
+        List<String> errors = null;
+
+        if(!Strings.isNullOrEmpty(email) && !Strings.isNullOrEmpty(pass) && !Strings.isNullOrEmpty(name) && !Strings.isNullOrEmpty(month)
+                && !Strings.isNullOrEmpty(day) && !Strings.isNullOrEmpty(year) && !Strings.isNullOrEmpty(gender)) {
             if((isInteger(day) && (Integer.parseInt(day) <= 0 || Integer.parseInt(day) > 31)) || !isInteger(day)) {
                 errors = new ArrayList<String>() {{
                     add(getDayErrorMessageElement().getText());
                     add(getCaptchaErrorMessageElement().getText());
                 }};
             }
-        } else {
+        }
+
+        return errors;
+    }
+
+    public List<String> validateSpotifySignUpValidForm(String email, String pass, String name, String month, String day, String year, String gender) {
+        List<String> errors = null;
+
+        if(!Strings.isNullOrEmpty(email) && !Strings.isNullOrEmpty(pass) && !Strings.isNullOrEmpty(name) && !Strings.isNullOrEmpty(month)
+                && !Strings.isNullOrEmpty(day) && !Strings.isNullOrEmpty(year) && !Strings.isNullOrEmpty(gender)) {
             errors = new ArrayList<String>() {{
                 add(getCaptchaErrorMessageElement().getText());
             }};

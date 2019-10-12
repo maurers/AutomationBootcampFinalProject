@@ -55,7 +55,15 @@ public class SpotifySignUpPage extends BasePage {
     }
 
     public List<String> validateSpotifySignUpForm(String email, String pass, String name, String month, String day, String year, String gender) {
-        return this.signUpComponent.validateSpotifySignUpForm(email, pass, name, month, day, year, gender);
+        return this.signUpComponent.validateSpotifySignUpEmptyForm(email, pass, name, month, day, year, gender);
+    }
+
+    public List<String> validateSpotifySignUpInvalidDayForm(String email, String pass, String name, String month, String day, String year, String gender) {
+        return this.signUpComponent.validateSpotifySignUpInvalidDayForm(email, pass, name, month, day, year, gender);
+    }
+
+    public List<String> validateSpotifySignUpValidForm(String email, String pass, String name, String month, String day, String year, String gender) {
+        return this.signUpComponent.validateSpotifySignUpValidForm(email, pass, name, month, day, year, gender);
     }
 
     // ToDO: Implement this method
