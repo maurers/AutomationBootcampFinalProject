@@ -54,16 +54,8 @@ public class SpotifySignUpPage extends BasePage {
         this.signUpComponent.clickOnRegistrateButton();
     }
 
-    public List<String> getSpotifySignUpEmptyFormErrors() {
-        return this.signUpComponent.getSpotifySignUpEmptyFormErrors();
-    }
-
-    public List<String> getSpotifySignUpInvalidDayFormErrors() {
-        return this.signUpComponent.getSpotifySignUpInvalidDayFormErrors();
-    }
-
-    public List<String> getSpotifySignUpValidFormCaptchaError() {
-        return this.signUpComponent.getSpotifySignUpValidFormCaptchaError();
+    public List<String> getAllSpotifySignUpFormErrorMessages() {
+        return this.signUpComponent.getAllSpotifySignUpFormErrorMessages();
     }
 
     // ToDO: Implement this method

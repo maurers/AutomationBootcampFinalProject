@@ -3,7 +3,7 @@ package com.qalabs.seleniumbasics.spotify.unit;
 import com.github.javafaker.Faker;
 import com.qalabs.javabasics.spotify.pages.SpotifySignUpPage;
 import com.qalabs.seleniumbasics.spotify.BaseTest;
-import com.qalabs.seleniumbasics.spotify.utils.Utils;
+import com.qalabs.seleniumbasics.spotify.utilities.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.Log;
@@ -42,7 +42,7 @@ public class SignUpPageTests extends BaseTest {
         );
         spotifySignUpPage.clickOnRegistrateButton();
 
-        List<String> listOfErrors = spotifySignUpPage.getSpotifySignUpValidFormCaptchaError();
+        List<String> listOfErrors = spotifySignUpPage.getAllSpotifySignUpFormErrorMessages();
         Log.info("Size of the list: " + listOfErrors.size());
         Assert.assertTrue(listOfErrors.size() > 0);
     }
@@ -64,7 +64,7 @@ public class SignUpPageTests extends BaseTest {
         );
         spotifySignUpPage.clickOnRegistrateButton();
 
-        List<String> listOfErrors = spotifySignUpPage.getSpotifySignUpInvalidDayFormErrors();
+        List<String> listOfErrors = spotifySignUpPage.getAllSpotifySignUpFormErrorMessages();
         Log.info("Size of the list: " + listOfErrors.size());
         Assert.assertTrue(listOfErrors.size() > 0);
     }
@@ -77,7 +77,7 @@ public class SignUpPageTests extends BaseTest {
 
         spotifySignUpPage.clickOnRegistrateButton();
 
-        List<String> listOfErrors = spotifySignUpPage.getSpotifySignUpEmptyFormErrors();
+        List<String> listOfErrors = spotifySignUpPage.getAllSpotifySignUpFormErrorMessages();
         Log.info("Size of the list: " + listOfErrors.size());
         Assert.assertTrue(listOfErrors.size() > 0);
     }

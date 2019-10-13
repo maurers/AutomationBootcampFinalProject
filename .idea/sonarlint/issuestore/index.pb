@@ -30,3 +30,13 @@ Fsrc/main/java/com/qalabs/javabasics/spotify/pages/SpotifyHelpPage.java,0/0/00a
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 m
 =src/test/java/com/qalabs/seleniumbasics/spotify/BaseTest.java,e/e/eefcdd73cfd9154d5a4210ab2d0a1ba76c86898b
+u
+Esrc/test/java/com/qalabs/seleniumbasics/spotify/WebDriverFactory.java,e/7/e70ed4ad09723fce28299326c1bf871a8dc8c059
+p
+@src/test/java/com/qalabs/seleniumbasics/spotify/utils/Utils.java,5/9/59a47a2c9daa85536f7b2b0fbcc31fbdd3260af4
+L
+SpotifyAutomationTesting.log,0/7/070c3e4187dfeaf5e722a6fa7b72166e388e104f
+y
+Isrc/test/java/com/qalabs/seleniumbasics/spotify/unit/SignUpPageTests.java,4/6/460f3c149cec2975faad43303e6dcd17a1ddaa69
+y
+Isrc/main/java/com/qalabs/javabasics/spotify/components/signup/sample.java,7/0/7038dd932a6e4fad23084b96dd68e980dbab4185

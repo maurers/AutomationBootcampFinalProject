@@ -1,21 +1,37 @@
 
-†squid:S1450("cRemove the "monthDropdownElement" field and declare it as a local variable in the relevant methods.(ϋµθνώÿÿÿÿ8ζ‚ήΫ-
-}squid:S1171›"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
-}squid:S1171©"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8¶Ά³ζΫ-
-~squid:S1450)"[Remove the "monthOptions" field and declare it as a local variable in the relevant methods.(ε§ÿΪωÿÿÿÿ8ζ‚ήΫ-
-_squid:UselessImportCheck"4Remove this unused import 'java.util.regex.Matcher'.(λΕ›γ8ζ‚ήΫ-
+}squid:S1171»"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8™έησΫ-
+Psquid:S3599¦",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8δησΫ-
+}squid:S1171ά"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8£»®”ά-
+}squid:S1171Ι"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ΖΌ³σΫ-
+Psquid:S3599Ι",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ωθσΫ-
+Psquid:S3599",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8°υµσΫ-
+Psquid:S3599­",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8δησΫ-
+Psquid:S3599β",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8£»®”ά-
+}squid:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8δησΫ-
+Psquid:S3599»",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8™έησΫ-
 dsquid:UselessImportCheck"4Remove this unused import 'java.util.regex.Pattern'.(Γ•…Δϊÿÿÿÿ8ζ‚ήΫ-
-Psquid:S3599",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
-Psquid:S3599©",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8¶Ά³ζΫ-
-}squid:S1171•"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
-}squid:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
-~squid:UselessImportCheck
-"NRemove this unused import 'org.openqa.selenium.support.ui.ExpectedConditions'.(ϋ€Θιϊÿÿÿÿ8ζ‚ήΫ-
-†squid:S1157l"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(μ»›Ψÿÿÿÿÿ8ζ‚ήΫ-
-Psquid:S3599Έ",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ƒ΅—ζΫ-
-Nsquid:S1066¨"/Merge this if statement with the enclosing one.(έ΄φΔ8¶Ά³ζΫ-
+}squid:S1171¦"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8δησΫ-
+†squid:S1450("cRemove the "monthDropdownElement" field and declare it as a local variable in the relevant methods.(ϋµθνώÿÿÿÿ8ζ‚ήΫ-
+}squid:S1171β"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8£»®”ά-
+}squid:S1171Β"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ωθσΫ-
+}squid:S1171θ"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8£»®”ά-
+Psquid:S3599",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ΖΌ³σΫ-
 ssquid:S2068<"V'password' detected in this expression, review this potentially hard-coded credential.(ΝΪ¶/8ζ‚ήΫ-
-Psquid:S3599›",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
-Ksquid:S1068"(Remove this unused "wait" private field.(νÒα§ωÿÿÿÿ8ζ‚ήΫ-
-Psquid:S3599•",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ζ‚ήΫ-
-}squid:S1171Έ"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ƒ΅—ζΫ-
+}squid:S1171­"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8δησΫ-
+Psquid:S3599΄",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8δησΫ-
+Psquid:S3599Β",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ωθσΫ-
+†squid:S1157"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(μ»›Ψÿÿÿÿÿ8…ώƒρΫ-
+ksquid:UselessImportCheck";Remove this unused import 'com.google.common.base.Strings'.(¬κΕ΅ψÿÿÿÿ8ξ‰β“ά-
+}squid:S1171Π"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ωθσΫ-
+Psquid:S3599Π",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8ωθσΫ-
+}squid:S1171΄"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8ωθσΫ-
+_squid:UselessImportCheck"4Remove this unused import 'java.util.regex.Matcher'.(λΕ›γ8ζ‚ήΫ-
+squid:S1157"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(ήλέb8¶ƒρΫ-
+~squid:S1450)"[Remove the "monthOptions" field and declare it as a local variable in the relevant methods.(ε§ÿΪωÿÿÿÿ8ζ‚ήΫ-
+Psquid:S3599ά",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8£»®”ά-
+}squid:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8°υµσΫ-
+Psquid:S3599θ",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8£»®”ά-
+Psquid:S3599τ",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8δ³”ά-
+}squid:S1171τ"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8δ³”ά-
+Psquid:S3599ϊ",Use another way to initialize this instance.(»χυξÿÿÿÿÿ8δ³”ά-
+}squid:S1171ϊ"YMove the contents of this initializer to a standard constructor or to field initializers.(»χυξÿÿÿÿÿ8δ³”ά-

@@ -1,6 +1,5 @@
 package com.qalabs.javabasics.spotify.components.signup;
 
-import com.google.common.base.Strings;
 import com.qalabs.javabasics.spotify.components.SpotifyComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,10 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.sql.ClientInfoStatus;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SignUpComponent extends SpotifyComponent {
 
@@ -55,15 +53,7 @@ public class SignUpComponent extends SpotifyComponent {
     @FindBy(how = How.ID, using = "register-button-email-submit")
     private WebElement signUpButton;
 
-    private String emailErrorMessageXPathLocator = "//label[@for = 'register-email' and @class = 'has-error']";
-    private String confirmEmailErrorMessageXPathLocator = "//label[@for = 'register-confirm-email' and @class = 'has-error']";
-    private String passwordErrorMessageXPathLocator = "//label[@for = 'register-password' and @class = 'has-error']";
-    private String nameErrorMessageXPathLocator = "//label[@for = 'register-displayname' and @class = 'has-error']";
-    private String dayErrorMessageXPathLocator = "//label[@for = 'register-dob-day' and @class = 'has-error']";
-    private String monthErrorMessageXPathLocator = "//label[@for = 'register-dob-month' and @class = 'has-error']";
-    private String yearErrorMessageXPathLocator = "//label[@for = 'register-dob-year' and @class = 'has-error']";
-    private String genderErrorMessageXPathLocator = "//label[@for = 'signup_form[gender]' and @class = 'has-error']";
-    private String captchaErrorMessageXPathLocator = "//label[@for = 'captcha-hidden' and @class = 'has-error']";
+    private String allErrorMessagesXPathLocator = "//label[contains(@class, 'has-error')]";
 
     // Constructor
 
@@ -144,112 +134,17 @@ public class SignUpComponent extends SpotifyComponent {
         signUpButton.click();
     }
 
-    public List<String> getSpotifySignUpEmptyFormErrors() {
-        List<String> errors = null;
+    public List<String> getAllSpotifySignUpFormErrorMessages() {
+        List<String> errors = new ArrayList<String>();
 
-        wait.until(ExpectedConditions.visibilityOf(getEmailErrorMessageElement()));
-        if(getEmailErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getEmailErrorMessageElement().getText());
-            }};
-        }
+        //wait.until(ExpectedConditions.visibilityOf(this.signUpButton));
 
-        wait.until(ExpectedConditions.visibilityOf(getConfirmEmailErrorMessageElement()));
-        if(getConfirmEmailErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getConfirmEmailErrorMessageElement().getText());
-            }};
-        }
-
-        wait.until(ExpectedConditions.visibilityOf(getPasswordErrorMessageElement()));
-        if(getPasswordErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getPasswordErrorMessageElement().getText());
-            }};
-        }
-
-        wait.until(ExpectedConditions.visibilityOf(getNameErrorMessageElement()));
-        if(getNameErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getNameErrorMessageElement().getText());
-            }};
-        }
-
-        wait.until(ExpectedConditions.visibilityOf(getDayErrorMessageElement()));
-        if(getDayErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getDayErrorMessageElement().getText());
-            }};
-        }
-
-        wait.until(ExpectedConditions.visibilityOf(getMonthErrorMessageElement()));
-        if(getMonthErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getMonthErrorMessageElement().getText());
-            }};
-        }
-
-        wait.until(ExpectedConditions.visibilityOf(getYearErrorMessageElement()));
-        if(getYearErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getYearErrorMessageElement().getText());
-            }};
-        }
-
-        wait.until(ExpectedConditions.visibilityOf(getGenderErrorMessageElement()));
-        if(getGenderErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getGenderErrorMessageElement().getText());
-            }};
-        }
-
-        wait.until(ExpectedConditions.visibilityOf(getCaptchaErrorMessageElement()));
-        if(getCaptchaErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getCaptchaErrorMessageElement().getText());
-            }};
-        }
-
-        return errors;
-    }
-
-    public List<String> getSpotifySignUpInvalidDayFormErrors() {
-        List<String> errors = null;
-
-        if(getEmailErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getEmailErrorMessageElement().getText());       // I added this line in case if email was already registered
-            }};
-        }
-
-        if(getDayErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getDayErrorMessageElement().getText());
-            }};
-        }
-
-        if(getCaptchaErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getCaptchaErrorMessageElement().getText());
-            }};
-        }
-
-        return errors;
-    }
-
-    public List<String> getSpotifySignUpValidFormCaptchaError() {
-        List<String> errors = null;
-
-        if(getEmailErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getEmailErrorMessageElement().getText());       // I added this line in case if email was already registered
-            }};
-        }
-
-        if(getCaptchaErrorMessageElement().getText().length() > 0) {
-            errors = new ArrayList<String>() {{
-                add(getCaptchaErrorMessageElement().getText());
-            }};
+        if(getAllErrorMessagesElements().size() > 0) {
+            for (WebElement item : getAllErrorMessagesElements()) {
+                if(item.getText().length() > 0) {
+                    errors.add(item.getText());
+                }
+            }
         }
 
         return errors;
@@ -257,39 +152,7 @@ public class SignUpComponent extends SpotifyComponent {
 
     // Setting dynamic elements
 
-    private WebElement getEmailErrorMessageElement() {
-        return driver.findElement(By.xpath(emailErrorMessageXPathLocator));
-    }
-
-    private WebElement getConfirmEmailErrorMessageElement() {
-        return driver.findElement(By.xpath(confirmEmailErrorMessageXPathLocator));
-    }
-
-    private WebElement getPasswordErrorMessageElement() {
-        return driver.findElement(By.xpath(passwordErrorMessageXPathLocator));
-    }
-
-    private WebElement getNameErrorMessageElement() {
-        return driver.findElement(By.xpath(nameErrorMessageXPathLocator));
-    }
-
-    private WebElement getDayErrorMessageElement() {
-        return driver.findElement(By.xpath(dayErrorMessageXPathLocator));
-    }
-
-    private WebElement getMonthErrorMessageElement() {
-        return driver.findElement(By.xpath(monthErrorMessageXPathLocator));
-    }
-
-    private WebElement getYearErrorMessageElement() {
-        return driver.findElement(By.xpath(yearErrorMessageXPathLocator));
-    }
-
-    private WebElement getGenderErrorMessageElement() {
-        return driver.findElement(By.xpath(genderErrorMessageXPathLocator));
-    }
-
-    private WebElement getCaptchaErrorMessageElement() {
-        return driver.findElement(By.xpath(captchaErrorMessageXPathLocator));
+    private List<WebElement> getAllErrorMessagesElements() {
+        return driver.findElements(By.xpath(allErrorMessagesXPathLocator));
     }
 }
