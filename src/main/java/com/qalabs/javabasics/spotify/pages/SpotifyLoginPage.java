@@ -52,7 +52,7 @@ public class SpotifyLoginPage extends BasePage {
     @Override
     public boolean isLoaded() {
         try {
-            wait.until(ExpectedConditions.visibilityOf(loginComponent.getLoginButton()));
+            wait.until(ExpectedConditions.visibilityOf(this.loginComponent.getLoginButton()));
 
             return this.loginComponent.getLoginButton().isDisplayed();
         } catch (RuntimeException exception) {

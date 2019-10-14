@@ -29,11 +29,9 @@ public class LoginComponent extends SpotifyComponent {
     @FindBy(how = How.ID, using = "login-button")
     private WebElement loginButton;
 
-    /*
-    private String emailErrorMessageXPathLocator = "//label[@class='control-label-validation ng-binding ng-scope' and @for='login-username']";
-    private String passwordErrorMessageXPathLocator = "//label[@class='control-label-validation ng-binding ng-scope' and @for='login-password']";
-    private String userAndPassErrorMessageXPathLocator = "//span[@class='ng-binding ng-scope']";
-    */
+    private String allErrorMessagesXPathLocator = "label[class*='ng-binding ng-scope']";
+    private String yellowErrorMessageXPathLocator = "p > span[class *= 'ng-binding ng-scope']";
+
     //Constructor
 
     public LoginComponent(WebDriver driver) {
@@ -68,8 +66,19 @@ public class LoginComponent extends SpotifyComponent {
     public List<String> getAllSpotifyLogInFormErrorMessages() {
         List<String> errors = new ArrayList<String>();
 
-        if(getAllErrorMessagesElements().size() > 0) {
-            for (WebElement item : getAllErrorMessagesElements()) {
+        List<WebElement> errorMessagesListElements = getAllErrorMessagesElements();
+        List<WebElement> yellowErrorMessagesListElements = getYellowErrorMessagesElement();
+
+        if(errorMessagesListElements.size() > 0) {
+            for (WebElement item : errorMessagesListElements) {
+                if(item.getText().length() > 0) {
+                    errors.add(item.getText());
+                }
+            }
+        }
+
+        if(yellowErrorMessagesListElements.size() > 0){
+            for (WebElement item : yellowErrorMessagesListElements) {
                 if(item.getText().length() > 0) {
                     errors.add(item.getText());
                 }
@@ -80,6 +89,23 @@ public class LoginComponent extends SpotifyComponent {
     }
 
     //Setting dynamic elements
-    private List<WebElement> getAllErrorMessagesElements() { return driver.findElements(By.cssSelector(".ng-binding.ng-scope")); }
+    private List<WebElement> getAllErrorMessagesElements() {
+        List<WebElement> list = new ArrayList<WebElement>();
 
+        try {
+            return wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector(allErrorMessagesXPathLocator))));
+        } catch (Exception ex) {
+            return list;
+        }
+    }
+
+    private List<WebElement> getYellowErrorMessagesElement() {
+        List<WebElement> list = new ArrayList<WebElement>();
+
+        try {
+            return wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.cssSelector(yellowErrorMessageXPathLocator))));
+        } catch(Exception ex) {
+            return list;
+        }
+    }
 }

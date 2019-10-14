@@ -17,7 +17,7 @@ public class LogInPageTests extends BaseTest {
 
     private List<String> fakeData = new ArrayList<String>() {{
         add(Utils.generateEmail("gmail.com", 4));
-        add("BlancaMoreno");
+        add("Blanca Moreno");
         add(faker.internet().password());
     }};
 
@@ -27,22 +27,10 @@ public class LogInPageTests extends BaseTest {
 
         this.driver.navigate().to(spotifyLogInPage.BASE_URL);
 
-        spotifyLogInPage.fillSpotifyLogInForm(
-                fakeData.get(1),
-                fakeData.get(2)
-        );
+        spotifyLogInPage.fillSpotifyLogInForm(fakeData.get(1), fakeData.get(2));
         spotifyLogInPage.clickOnLoginButton();
 
-
-        spotifyLogInPage.isLoaded();
-
-        // No alcanza a agarrar error "Nombre de usuario o contraseña incorrectos"
-        // ya que no alcanza a cargar el elemento a tiempo ¿Alguna idea?
         List<String> listOfErrors = spotifyLogInPage.getAllSpotifyLogInFormErrorMessages();
-        Log.info("Size of the list: " + listOfErrors.size());
-        for (String error : listOfErrors) {
-            Log.info("Error: " + error);
-        }
         Assert.assertTrue(listOfErrors.size() > 0);
     }
 
@@ -52,21 +40,11 @@ public class LogInPageTests extends BaseTest {
 
         this.driver.navigate().to(spotifyLogInPage.BASE_URL);
 
-        spotifyLogInPage.fillSpotifyLogInForm(
-                fakeData.get(0),
-                fakeData.get(2)
-        );
+        spotifyLogInPage.fillSpotifyLogInForm(fakeData.get(0), fakeData.get(2));
         spotifyLogInPage.clickOnLoginButton();
-
-        // No alcanza a agarrar error "Nombre de usuario o contraseña incorrectos"
-        // ya que no alcanza a cargar el elemento a tiempo ¿Alguna idea?
         spotifyLogInPage.isLoaded();
 
         List<String> listOfErrors = spotifyLogInPage.getAllSpotifyLogInFormErrorMessages();
-        Log.info("Size of the list: " + listOfErrors.size());
-        for (String error : listOfErrors) {
-            Log.info("Error: " + error);
-        }
         Assert.assertTrue(listOfErrors.size() > 0);
     }
 
@@ -77,17 +55,10 @@ public class LogInPageTests extends BaseTest {
         this.driver.navigate().to(spotifyLogInPage.BASE_URL);
 
         spotifyLogInPage.fillSpotifyLogInForm("","");
-
         spotifyLogInPage.clickOnLoginButton();
-
         spotifyLogInPage.isLoaded();
 
         List<String> listOfErrors = spotifyLogInPage.getAllSpotifyLogInFormErrorMessages();
-        Log.info("Size of the list: " + listOfErrors.size());
-
-        for (String error : listOfErrors) {
-            Log.info("Error: " + error);
-        }
         Assert.assertTrue(listOfErrors.size() > 0);
     }
 }
