@@ -25,7 +25,7 @@ public class WebDriverFactory {
     }
 
     private static WebDriver getChromeDriver() {
-        File rootPath = new File("src/test/resources/lib-thirdparty/driversforwin");
+        File rootPath = new File("src/test/resources/lib-thirdparty");
         File chromeFilePath;
         ChromeOptions options = new ChromeOptions();
 
@@ -33,11 +33,11 @@ public class WebDriverFactory {
 
         switch (getOperatingSystem()) {
             case WINDOWS:
-                chromeFilePath = new File(rootPath, "chromedriver.exe");
+                chromeFilePath = new File(rootPath + "/driversforwin", "chromedriver.exe");
                 System.setProperty("webdriver.chrome.driver", chromeFilePath.getPath());
             break;
             case MAC:
-                chromeFilePath = new File(rootPath, "chromedriver");
+                chromeFilePath = new File(rootPath + ".driversformac", "chromedriver");
                 System.setProperty("webdriver.chrome.driver", chromeFilePath.getPath());
             break;
             default:
@@ -49,16 +49,16 @@ public class WebDriverFactory {
     }
 
     private static WebDriver getFirefoxDriver() {
-        File rootPath = new File("src/test/resources/lib-thirdparty/driversforwin");
+        File rootPath = new File("src/test/resources/lib-thirdparty");
         File firefoxFilePath;
 
         switch (getOperatingSystem()) {
             case WINDOWS:
-                firefoxFilePath = new File(rootPath, "geckodriver.exe");
+                firefoxFilePath = new File(rootPath + "/driversforwin", "geckodriver.exe");
                 System.setProperty("webdriver.gecko.driver", firefoxFilePath.getPath());
             break;
             case MAC:
-                firefoxFilePath = new File(rootPath, "geckodriver");
+                firefoxFilePath = new File(rootPath + ".driversformac", "geckodriver");
                 System.setProperty("webdriver.gecko.driver", firefoxFilePath.getPath());
             break;
             default:
