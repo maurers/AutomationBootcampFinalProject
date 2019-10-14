@@ -37,7 +37,7 @@ public class WebDriverFactory {
                 System.setProperty("webdriver.chrome.driver", chromeFilePath.getPath());
             break;
             case MAC:
-                chromeFilePath = new File(rootPath + ".driversformac", "chromedriver");
+                chromeFilePath = new File(rootPath + "/driversformac", "chromedriver");
                 System.setProperty("webdriver.chrome.driver", chromeFilePath.getPath());
             break;
             default:
@@ -58,7 +58,7 @@ public class WebDriverFactory {
                 System.setProperty("webdriver.gecko.driver", firefoxFilePath.getPath());
             break;
             case MAC:
-                firefoxFilePath = new File(rootPath + ".driversformac", "geckodriver");
+                firefoxFilePath = new File(rootPath + "/driversformac", "geckodriver");
                 System.setProperty("webdriver.gecko.driver", firefoxFilePath.getPath());
             break;
             default:
