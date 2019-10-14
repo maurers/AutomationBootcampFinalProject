@@ -8,6 +8,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.List;
 public class LoginComponent extends SpotifyComponent {
 
     //Attributes
+    private WebDriverWait wait;
 
     @FindBy(how = How.ID, using = "login-username")
     private WebElement userInput;
@@ -25,14 +29,16 @@ public class LoginComponent extends SpotifyComponent {
     @FindBy(how = How.ID, using = "login-button")
     private WebElement loginButton;
 
+    /*
     private String emailErrorMessageXPathLocator = "//label[@class='control-label-validation ng-binding ng-scope' and @for='login-username']";
     private String passwordErrorMessageXPathLocator = "//label[@class='control-label-validation ng-binding ng-scope' and @for='login-password']";
     private String userAndPassErrorMessageXPathLocator = "//span[@class='ng-binding ng-scope']";
-
+    */
     //Constructor
 
     public LoginComponent(WebDriver driver) {
         super(driver);
+        wait = new WebDriverWait(driver, 5);
         this.driver = driver;
     }
 
@@ -44,67 +50,36 @@ public class LoginComponent extends SpotifyComponent {
 
     //Actions
 
-    public SpotifyLoginPage loginAccount(String user, String pass) {
+    public void fillSpotifyLogInForm(String user, String pass) {
+        wait.until(ExpectedConditions.visibilityOf(userInput));
         userInput.clear();
-        passInput.clear();
-
         userInput.sendKeys(user);
-        passInput.sendKeys(pass);
 
-        return new SpotifyLoginPage(this.driver);
+        wait.until(ExpectedConditions.visibilityOf(passInput));
+        passInput.clear();
+        passInput.sendKeys(pass);
     }
 
-    public void clickOnLoginButton() { loginButton.click(); }
+    public void clickOnLoginButton() {
+        wait.until(ExpectedConditions.visibilityOf(loginButton));
+        loginButton.click();
+    }
 
-    /*
-    Dude, add more validations in this method. The yellow error alert appears when
-    you try to attempt a login with invalid credentials.
-    There is another yellow error alert related to the request, catch it
-     */
-    /*public List<String> validateSpotifyLoginForm(String email, String pass) {
-        List<String> errors = null;
-
-        if(Strings.isNullOrEmpty(email) && Strings.isNullOrEmpty(pass)) {
-            errors = new ArrayList<String>() {{
-                add(getEmailErrorMessageElement().getText());
-                add(getPasswordErrorMessageElement().getText());
-                //add(getUserAndPassErrorMessageXPathLocator().getText());
-            }};
-        }
-
-        return errors;
-    }*/
-
-    public List<String> validateSpotifyLoginForm(String email, String pass) {
+    public List<String> getAllSpotifyLogInFormErrorMessages() {
         List<String> errors = new ArrayList<String>();
 
-        if(Strings.isNullOrEmpty(email))
-            errors.add(getEmailErrorMessageElement().getText());
-
-        if(Strings.isNullOrEmpty(pass))
-            errors.add(getPasswordErrorMessageElement().getText());
-
-        if(email.contains("'") || email.contains("\"") || email.contains("´") || email.contains("%") ||
-                email.contains("&") || email.contains(":"))
-            errors.add(getEmailErrorMessageElement().getText());
-
-        if(errors.isEmpty())
-            errors = null;
+        if(getAllErrorMessagesElements().size() > 0) {
+            for (WebElement item : getAllErrorMessagesElements()) {
+                if(item.getText().length() > 0) {
+                    errors.add(item.getText());
+                }
+            }
+        }
 
         return errors;
     }
 
     //Setting dynamic elements
+    private List<WebElement> getAllErrorMessagesElements() { return driver.findElements(By.cssSelector(".ng-binding.ng-scope")); }
 
-    private WebElement getEmailErrorMessageElement() {
-        return driver.findElement(By.xpath(emailErrorMessageXPathLocator));
-    }
-
-    private WebElement getPasswordErrorMessageElement() {
-        return driver.findElement(By.xpath(passwordErrorMessageXPathLocator));
-    }
-
-    private WebElement getUserAndPassErrorMessageXPathLocator() {
-        return driver.findElement(By.xpath(userAndPassErrorMessageXPathLocator));
-    }
 }

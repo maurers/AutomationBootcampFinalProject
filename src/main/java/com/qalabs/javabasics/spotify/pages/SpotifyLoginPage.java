@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Log;
 
 import java.util.List;
 
@@ -26,15 +27,14 @@ public class SpotifyLoginPage extends BasePage {
 
     public SpotifyLoginPage(WebDriver driver) {
         super(driver);
-
         wait = new WebDriverWait(driver, 5);
         this.loginComponent = new LoginComponent(driver);
     }
 
     //Actions
 
-    public SpotifyLoginPage spotifyLoginForm (String user, String pass) {
-        return this.loginComponent.loginAccount(user,pass);
+    public void fillSpotifyLogInForm (String user, String pass) {
+        this.loginComponent.fillSpotifyLogInForm(user, pass);
     }
 
     // ToDO: Implement this method
@@ -45,16 +45,19 @@ public class SpotifyLoginPage extends BasePage {
 
     public void clickOnLoginButton() { this.loginComponent.clickOnLoginButton(); }
 
-    public List<String> validateSpotifyLoginForm(String email, String pass) {
-        return this.loginComponent.validateSpotifyLoginForm(email,pass);
+    public List<String> getAllSpotifyLogInFormErrorMessages() {
+        return this.loginComponent.getAllSpotifyLogInFormErrorMessages();
     }
 
     @Override
     public boolean isLoaded() {
         try {
             wait.until(ExpectedConditions.visibilityOf(loginComponent.getLoginButton()));
-            return true;
+
+            return this.loginComponent.getLoginButton().isDisplayed();
         } catch (RuntimeException exception) {
+            Log.error(exception.toString());
+
             return false;
         }
     }
