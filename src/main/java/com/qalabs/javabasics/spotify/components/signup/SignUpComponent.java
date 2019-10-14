@@ -136,8 +136,7 @@ public class SignUpComponent extends SpotifyComponent {
 
     public List<String> getAllSpotifySignUpFormErrorMessages() {
         List<String> errors = new ArrayList<String>();
-
-        //wait.until(ExpectedConditions.visibilityOf(this.signUpButton));
+        List<WebElement> allErrorMessagesElementsList = getAllErrorMessagesElements();
 
         if(getAllErrorMessagesElements().size() > 0) {
             for (WebElement item : getAllErrorMessagesElements()) {
@@ -153,6 +152,13 @@ public class SignUpComponent extends SpotifyComponent {
     // Setting dynamic elements
 
     private List<WebElement> getAllErrorMessagesElements() {
-        return driver.findElements(By.xpath(allErrorMessagesXPathLocator));
+        List<WebElement> list = new ArrayList<WebElement>();
+
+        try {
+            wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath(allErrorMessagesXPathLocator), 0));
+            return driver.findElements(By.xpath(allErrorMessagesXPathLocator));
+        } catch (Exception ex) {
+            return list;
+        }
     }
 }
