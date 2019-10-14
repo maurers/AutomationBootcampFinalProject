@@ -7,7 +7,6 @@ public class LoginComponent extends SpotifyComponent {
 
     public LoginComponent(WebDriver driver) {
         super(driver);
-
         this.driver = driver;
     }
 }

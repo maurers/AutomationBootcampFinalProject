@@ -26,7 +26,6 @@ public class HomeHeaderComponent extends SpotifyComponent {
 
     public HomeHeaderComponent(WebDriver driver) {
         super(driver);
-
         this.driver = driver;
     }
 

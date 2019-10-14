@@ -13,7 +13,6 @@ public class SpotifyLoginPage extends BasePage {
 
     public SpotifyLoginPage(WebDriver driver) {
         super(driver);
-
         wait = new WebDriverWait(driver, 5);
         this.loginComponent = new LoginComponent(driver);
     }
