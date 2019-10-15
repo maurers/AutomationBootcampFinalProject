@@ -56,7 +56,6 @@ public class LogInPageTests extends BaseTest {
 
         spotifyLogInPage.fillSpotifyLogInForm("","");
         spotifyLogInPage.clickOnLoginButton();
-        spotifyLogInPage.isLoaded();
 
         List<String> listOfErrors = spotifyLogInPage.getAllSpotifyLogInFormErrorMessages();
         Assert.assertTrue(listOfErrors.size() > 0);

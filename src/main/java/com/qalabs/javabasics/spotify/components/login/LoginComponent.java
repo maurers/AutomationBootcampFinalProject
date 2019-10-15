@@ -65,7 +65,6 @@ public class LoginComponent extends SpotifyComponent {
 
     public List<String> getAllSpotifyLogInFormErrorMessages() {
         List<String> errors = new ArrayList<String>();
-
         List<WebElement> errorMessagesListElements = getAllErrorMessagesElements();
         List<WebElement> yellowErrorMessagesListElements = getYellowErrorMessagesElement();
 
