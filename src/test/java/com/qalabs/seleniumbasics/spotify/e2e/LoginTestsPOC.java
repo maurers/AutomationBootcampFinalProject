@@ -1,14 +1,15 @@
-package com.qalabs.seleniumbasics.spotify;
+package com.qalabs.seleniumbasics.spotify.e2e;
 
 import com.qalabs.javabasics.spotify.pages.SpotifyOverviewUserAccountPage;
 import com.qalabs.javabasics.spotify.pages.SpotifyLoginPage;
+import com.qalabs.seleniumbasics.spotify.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class LoginTests extends BaseTest {
+public class LoginTestsPOC extends BaseTest {
 
     private String spotifyURL;
 
