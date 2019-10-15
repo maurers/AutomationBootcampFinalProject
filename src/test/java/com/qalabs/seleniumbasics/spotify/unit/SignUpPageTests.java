@@ -43,7 +43,6 @@ public class SignUpPageTests extends BaseTest {
         spotifySignUpPage.clickOnRegistrateButton();
 
         List<String> listOfErrors = spotifySignUpPage.getAllSpotifySignUpFormErrorMessages();
-        Log.info("Size of the list: " + listOfErrors.size());
         Assert.assertTrue(listOfErrors.size() > 0);
     }
 
@@ -65,7 +64,6 @@ public class SignUpPageTests extends BaseTest {
         spotifySignUpPage.clickOnRegistrateButton();
 
         List<String> listOfErrors = spotifySignUpPage.getAllSpotifySignUpFormErrorMessages();
-        Log.info("Size of the list: " + listOfErrors.size());
         Assert.assertTrue(listOfErrors.size() > 0);
     }
 
@@ -78,7 +76,6 @@ public class SignUpPageTests extends BaseTest {
         spotifySignUpPage.clickOnRegistrateButton();
 
         List<String> listOfErrors = spotifySignUpPage.getAllSpotifySignUpFormErrorMessages();
-        Log.info("Size of the list: " + listOfErrors.size());
         Assert.assertTrue(listOfErrors.size() > 0);
     }
 }
