@@ -2,7 +2,7 @@
 <suite name="testCases" verbose="1">
     <test name="Basic Regresion">
         <classes>
-            <class name="com.qalabs.seleniumbasics.spotify.SpotifyTest">
+            <class name="com.qalabs.seleniumbasics.spotify.e2e.SpotifyTest">
                 <methods>
                     <include name="passTC" />
                 </methods>

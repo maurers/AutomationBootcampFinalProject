@@ -1,4 +1,4 @@
-package com.qalabs.seleniumbasics.utils;
+package com.qalabs.seleniumbasics.spotify.utilities;
 
 import java.io.IOException;
 import java.io.InputStream;

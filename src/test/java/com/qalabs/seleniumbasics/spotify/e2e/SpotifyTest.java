@@ -1,6 +1,12 @@
-package com.qalabs.seleniumbasics.spotify;
-import com.qalabs.seleniumbasics.utils.PropertyReader;
+package com.qalabs.seleniumbasics.spotify.e2e;
+import com.qalabs.javabasics.spotify.pages.SpotifyHelpPage;
+import com.qalabs.javabasics.spotify.pages.SpotifyHomePage;
+import com.qalabs.javabasics.spotify.pages.SpotifyLoginPage;
+import com.qalabs.javabasics.spotify.pages.SpotifySignUpPage;
+import com.qalabs.seleniumbasics.spotify.BaseTest;
+import com.qalabs.seleniumbasics.spotify.utilities.PropertyReader;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
@@ -19,9 +25,9 @@ public class SpotifyTest extends BaseTest {
         PropertyReader propertyReader = new PropertyReader();
         String page = propertyReader.getProperty("credentials.properties", "SPOTIFY_PAGE");
 
-        myDriver.navigate().to(page);
+       driver.navigate().to(page);
 
-        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(myDriver);
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(driver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertEquals(spotifyHomePage.BASE_URL, page, "Cargo una pagina diferente");
     }
@@ -31,9 +37,9 @@ public class SpotifyTest extends BaseTest {
         PropertyReader propertyReader = new PropertyReader();
         String page = propertyReader.getProperty("credentials.properties", "URL_INVALID");
 
-        this.myDriver.navigate().to(page);
+        this.driver.navigate().to(page);
 
-        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.driver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertNotEquals(spotifyHomePage.BASE_URL, page, "Las paginas son iguales, cuando deberian ser diferente");
     }
@@ -43,20 +49,20 @@ public class SpotifyTest extends BaseTest {
         String name;
         String pass;
         String pageLogin;
-        myDriver.navigate().to(spotifyUrl);
+       driver.navigate().to(spotifyUrl);
 
         PropertyReader propertyReader = new PropertyReader();
         name=propertyReader.getProperty("credentials.properties", "USERNAME");
         pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
         pageLogin=propertyReader.getProperty("credentials.properties","URL_LOGIN_PAGE");
 
-        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(myDriver);
+        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
         spotifyLoginPage.spotifyLoginPageForm(name,pass);
 
         Assert.assertTrue( SpotifyLoginPage.isLoaded(), "The page is not loaded" );
-        Assert.assertFalse(pageLogin.startsWith( myDriver.getCurrentUrl ));
+        Assert.assertFalse(pageLogin.startsWith(driver.getCurrentUrl ));
 
-        Assert.assertEquals( myDriver.getSpotifyLogin(), SpotifyLoginPage);
+        Assert.assertEquals(driver.getSpotifyLogin(), SpotifyLoginPage);
         Assert.assertTrue( false, "bad_credentials" );
     }
     
@@ -65,15 +71,15 @@ public class SpotifyTest extends BaseTest {
         String email;
         String pass;
         String pageLogin;
-        myDriver.navigate().to(spotifyUrl);
+       driver.navigate().to(spotifyUrl);
         PropertyReader propertyReader = new PropertyReader();
         email=propertyReader.getProperty("credentials.properties", "EMAIL_ADDRESS");
         pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
         pageLogin=propertyReader.getProperty("credentials.properties", "URL_LOGIN_PAGE");
-        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(myDriver);
+        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
         sporifyLoginPage.spotifyLoginPageFrom(email,pass);
         Assert.assertTrue(sporifyLoginPage.isLoaded(), "The page is not loaded");
-        Assert.assertFalse(page.startsWith(myDriver.getCurrentUrl()));
+        Assert.assertFalse(page.startsWith(driver.getCurrentUrl()));
     }
   
   @Test(description = "TC_US2_003 / Acceder al formulario de Inicio de Sesión de Spotify")
@@ -83,40 +89,40 @@ public class SpotifyTest extends BaseTest {
       
         String spotifySignUpUrl= propertyReader.getProperty("credentials.properties", "SPOTIFY_SIGNUP_URL");
       
-        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(this.myDriver);
-        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this,myDriver);
+        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(this.driver);
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this,driver);
 
-        myDriver.navigate().to(spotifyUrl);
+       driver.navigate().to(spotifyUrl);
         //Assert.assertTrue(facebookLoginPage.isLoaded(), "Google results page is not loaded");
-        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifyHomePage.BASE_URL);
+        Assert.assertEquals(driver.getCurrentUrl(), SpotifyHomePage.BASE_URL);
 
 
-        com.qalabs.seleniumbasics.utils.PropertyReader propertyReader= new PropertyReader();
+        PropertyReader propertyReader= new PropertyReader();
         name= propertyReader.getProperty("credentials.properties", "TC_US2_003_USSER_NAME");
         pass=propertyReader.getProperty("credentials.properties", "TC_US2_003_PASSWORD");
 
-        //myDriver.navigate().to(spotifyLoginUrl);
+        //driver.navigate().to(spotifyLoginUrl);
         SpotifyHomePage.goToLoginPage();
-        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifyLoginPage.LOGIN_URL);
+        Assert.assertEquals(driver.getCurrentUrl(), SpotifyLoginPage.LOGIN_URL);
 
-        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(myDriver);
+        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
         SpotifyLoginPage.spotifyLoginForm(name,pass);
-        Assert.assertTrue(myDriver.getCurrentUrl().startsWith(spotifyLoginUrl),"No se realizo el login");
+        Assert.assertTrue(driver.getCurrentUrl().startsWith(spotifyLoginUrl),"No se realizo el login");
     }
   
     @Test(description = "TC_US2_004/Acceder al formulario de Inicio de Sesión de Spotify ")
     public void LoginSpotifyCheck(){
-        //this.myDriver.navigate().to(spotifyUrl);
+        //this.driver.navigate().to(spotifyUrl);
         PropertyReader propertyReader = new PropertyReader();
         String pageLoginUrl = propertyReader.getProperty("credentials.properties","URL_LOGIN_PAGE");
 
-        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.driver);
         SpotifyLoginPage spotifyLoginPage = spotifyHomePage.goToLoginPage();
 
         //checks if spotifyLoginPage has finish loading with the isLoaded method and its BASE_URL
         Assert.assertTrue(spotifyLoginPage.isLoaded(), "Página de login no se cargo correctamente");
         //Checks if the URL of mydrive is the same as the one in credentials
-        Assert.assertEquals(pageLoginUrl,myDriver.getCurrentUrl());
+        Assert.assertEquals(pageLoginUrl,driver.getCurrentUrl());
     }
 
     @Test(description = "TC_US2_005 / Acceder al formulario de Inicio de Sesión e ingresar sus credenciales de manera manual, utilizando un username, sin emplear algún método de autenticación de terceros")
@@ -126,8 +132,8 @@ public class SpotifyTest extends BaseTest {
         String homePage = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
         String loginPage = propertyReader.getProperty("credentials.properties", "URL_LOGIN");
 
-        myDriver.navigate().to(homePage);
-        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(myDriver);
+       driver.navigate().to(homePage);
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(driver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertEquals(spotifyHomePage.BASE_URL, homePage, "Cargo una pagina diferente");
 
@@ -137,7 +143,7 @@ public class SpotifyTest extends BaseTest {
         String user = propertyReader.getProperty("credentials.properties", "USERNAME");
         String pass = propertyReader.getProperty("credentials.properties", "PASSWORD");
 
-        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(myDriver);
+        SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
         Assert.assertTrue(spotifyLoginPage.isLoaded(), "Página de login no se cargo correctamente");
         spotifyLoginPage.spotifyLoginForm(user,pass);
         Assert.assertFalse( spotifyLoginPage.isLoaded(), "No inició sesión, sigue en la página de login");
@@ -149,13 +155,13 @@ public class SpotifyTest extends BaseTest {
         String homePage = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
         String signUpPage = propertyReader.getProperty("credentials.properties", "URL_SIGNUP_PAGE");
 
-        this.myDriver.navigate().to(homePage);
-        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
+        this.driver.navigate().to(homePage);
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.driver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertEquals(spotifyHomePage.BASE_URL, homePage, "Cargo una pagina diferente");
 
         spotifyHomePage.goToGetSpotify();
-        SpotifySignUpPage spotifySignUpPage = new SpotifySignUpPage(this.myDriver);
+        SpotifySignUpPage spotifySignUpPage = new SpotifySignUpPage(this.driver);
         Assert.assertTrue(spotifySignUpPage.isLoaded(), "Pagina registro no se cargo correctamente");
         spotifySignUpPage.spotifySignUpForm("", "", "", "", "", "", "");
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página no se cargo correctamente");
@@ -175,7 +181,7 @@ public class SpotifyTest extends BaseTest {
         String pageSingUp;
 
 
-        myDriver.navigate().to(spotifyUrl);
+       driver.navigate().to(spotifyUrl);
 
         PropertyReader propertyReader = new PropertyReader();
         email=propertyReader.getProperty("credentials.properties", "EMAIL");
@@ -191,7 +197,7 @@ public class SpotifyTest extends BaseTest {
         spotifySingUpForm.signUpAccount(email,pass,name,day,month,year,gender);
 
         Assert.assertTrue( SpotifySingUp.isLoaded(), "The page is not loaded" );
-        Assert.assertFalse(pageSingUp.startsWith( myDriver.getCurrentUrl ));
+        Assert.assertFalse(pageSingUp.startsWith(driver.getCurrentUrl ));
         Assert.assertFalse( true, "Se solicita validacion captcha" );
     }
   
@@ -205,7 +211,7 @@ public class SpotifyTest extends BaseTest {
         String year;
         String pageSignUp;
 
-        myDriver.navigate().to(spotifyUrl);
+       driver.navigate().to(spotifyUrl);
         PropertyReader propertyReader = new PropertyReader();
         email=propertyReader.getProperty("credentials.properties", "EMAIL");
         pass=propertyReader.getProperty("credentials.properties", "PASSWORD");
@@ -215,10 +221,10 @@ public class SpotifyTest extends BaseTest {
         year=propertyReader.getProperty("credentials.properties", "YEAR_VALID");
         pageSignUp=propertyReader.getProperty("credentials.properties", "URL_SIGNUP_PAGE");
 
-        SpotifySignUpPage spotifySingUpPage = new SpotifySingUpPage(myDriver);
+        SpotifySignUpPage spotifySingUpPage = new SpotifySingUpPage(driver);
         spotifySingUpForm.signUpAccount(email,pass,name,day,month,year);
         Assert.assertTrue( SpotifySignUpPage.isLoaded(), "The page is not loaded");
-        Assert.assertFalse(pageSignUp.startsWith(myDriver.getCurrentUrl()));
+        Assert.assertFalse(pageSignUp.startsWith(driver.getCurrentUrl()));
 
     }
   
@@ -242,20 +248,20 @@ public class SpotifyTest extends BaseTest {
         month=propertyReader.getProperty("credentials.properties", "TC_US4_002_MONTH");
         year=propertyReader.getProperty("credentials.properties", "TC_US4_002_YEAR");
         gender=propertyReader.getProperty("credentials.properties", "TC_US4_002_GENDER");
-        SpotifySignUpPage spotifySignUpPage = new SpotifySignUpPage(this.myDriver);
+        SpotifySignUpPage spotifySignUpPage = new SpotifySignUpPage(this.driver);
 
-        myDriver.navigate().to(spotifyUrl);
+       driver.navigate().to(spotifyUrl);
         //Assert.assertTrue(facebookLoginPage.isLoaded(), "Google results page is not loaded");
-        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifyHomePage.BASE_URL);
+        Assert.assertEquals(driver.getCurrentUrl(), SpotifyHomePage.BASE_URL);
 
         SpotifyHomePage.goToSignUpPage();
         //Assert.assertTrue(facebookLoginPage.isLoaded(), "Google results page is not loaded");
-        Assert.assertEquals(myDriver.getCurrentUrl(), SpotifySignUpPage.SPOTIFY_SIGNUP_URL);
+        Assert.assertEquals(driver.getCurrentUrl(), SpotifySignUpPage.SPOTIFY_SIGNUP_URL);
 
 
 
         spotifySignUpPage.spotifySignUpform(name,pass,email,day,month,year,gender);
-        Assert.assertNotEquals(myDriver.getCurrentUrl(),SpotifySignUpPage.SPOTIFY_SIGNUP_URL);
+        Assert.assertNotEquals(driver.getCurrentUrl(),SpotifySignUpPage.SPOTIFY_SIGNUP_URL);
     }
 
     @Test(description = "TC_US5_001 / Ir a la pagina de soporte tecnico atraves del link de Ayuda en el Header")
@@ -266,8 +272,8 @@ public class SpotifyTest extends BaseTest {
         String helpPageUrl = propertyReader.getProperty("credentials.properties", "URL_HELP");
         String homePageUrl = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
 
-        //instantiate  a SpotifyHomePage with myDriver
-        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
+        //instantiate  a SpotifyHomePage withdriver
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.driver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página de ayuda no se cargo correctamente");
 
 
@@ -277,7 +283,7 @@ public class SpotifyTest extends BaseTest {
         //checks if spotifyHelpPage has finish loading with the isLoaded method and its BASE_URL
         Assert.assertTrue(spotifyHelpPage.isLoaded(), "Página de ayuda no se cargo correctamente");
         //Checks if the URL of mydrive is the same as the one in credentials
-        Assert.assertTrue(myDriver.getCurrentUrl().startsWith(helpPageUrl));
+        Assert.assertTrue(driver.getCurrentUrl().startsWith(helpPageUrl));
     }
     
     @Test(description = "TC_US6_001 / Probar icono de spotify que redireccione a home page desde home page")
@@ -285,8 +291,8 @@ public class SpotifyTest extends BaseTest {
         PropertyReader propertyReader = new PropertyReader();
         String homePage = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
 
-        this.myDriver.navigate().to(homePage);
-        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
+        this.driver.navigate().to(homePage);
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.driver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertEquals(spotifyHomePage.BASE_URL, homePage, "Cargo una pagina diferente");
 
@@ -301,13 +307,13 @@ public class SpotifyTest extends BaseTest {
         String homePage = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
         String helpPage = propertyReader.getProperty("credentials.properties", "URL_HELP");
 
-        this.myDriver.navigate().to(homePage);
-        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.myDriver);
+        this.driver.navigate().to(homePage);
+        SpotifyHomePage spotifyHomePage = new SpotifyHomePage(this.driver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
         Assert.assertEquals(spotifyHomePage.BASE_URL, homePage, "Cargo una pagina diferente");
 
         spotifyHomePage.goToHelpPage();
-        SpotifyHelpPage spotifyHelpPage = new SpotifyHelpPage(this.myDriver);
+        SpotifyHelpPage spotifyHelpPage = new SpotifyHelpPage(this.driver);
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página ayuda no se cargo correctamente");
         Assert.assertTrue(spotifyHelpPage.BASE_URL.startsWith(helpPage), "Cargo una pagina diferente a Ayuda");
 
