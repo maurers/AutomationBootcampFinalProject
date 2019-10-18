@@ -32,6 +32,8 @@ public class LoginTestsPOC extends BaseTest {
 
         SpotifyOverviewUserAccountPage spotifyOverviewUserAccountPage = new SpotifyOverviewUserAccountPage(this.driver);
         Assert.assertTrue(spotifyOverviewUserAccountPage.isLoaded());
+
+        // ToDO: Close session after login to avoid the other tests fails
     }
 
     @Test
