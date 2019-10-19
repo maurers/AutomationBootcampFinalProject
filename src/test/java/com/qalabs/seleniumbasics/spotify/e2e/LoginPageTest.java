@@ -6,7 +6,7 @@ import com.qalabs.javabasics.spotify.pages.SpotifyLoginPage;
 import com.qalabs.seleniumbasics.spotify.BaseTest;
 import com.qalabs.seleniumbasics.spotify.utilities.PropertyReader;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 public class LoginPageTest extends BaseTest {
     private String spotifyUrl;
 
-    @BeforeTest
+    @BeforeMethod
     public void initSetup(){
         PropertyReader propertyReader= new PropertyReader();
         spotifyUrl= propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
@@ -40,7 +40,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertTrue(listOfErrors.isEmpty(), "Bad credentials");
 
         SpotifyOverviewUserAccountPage spotifyOverviewUserAccountPage = new SpotifyOverviewUserAccountPage(this.driver);
-        Assert.assertTrue(spotifyOverviewUserAccountPage.isLoaded(), "No pudo hacer login");
+        Assert.assertFalse(spotifyOverviewUserAccountPage.isLoaded(), "Hizo Login");
     }
 
     @Test(alwaysRun = true,description = "TC_US2_002/Acceder al formulario de Inicio de Sesión de Spotify")
@@ -57,7 +57,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertTrue(listOfErrors.isEmpty(), "Bad credentials");
 
         SpotifyOverviewUserAccountPage spotifyOverviewUserAccountPage = new SpotifyOverviewUserAccountPage(this.driver);
-        Assert.assertTrue(spotifyOverviewUserAccountPage.isLoaded(), "No pudo hacer login");
+        Assert.assertFalse(spotifyOverviewUserAccountPage.isLoaded(), "Hizo Login");
     }
 
     @Test(description = "TC_US2_003 / Acceder al formulario de Inicio de Sesión de Spotify")
@@ -69,12 +69,13 @@ public class LoginPageTest extends BaseTest {
 
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
         spotifyLoginPage.fillSpotifyLogInForm(user,pass);
+        spotifyLoginPage.clickOnLoginButton();
 
         List<String> listOfErrors = spotifyLoginPage.getAllSpotifyLogInFormErrorMessages();
-        Assert.assertTrue(listOfErrors.isEmpty(), "Bad credentials");
+        Assert.assertTrue(listOfErrors.get(0).contains("Incorrect username or password"), "Mensaje de Error Diferente ");
 
         SpotifyOverviewUserAccountPage spotifyOverviewUserAccountPage = new SpotifyOverviewUserAccountPage(this.driver);
-        Assert.assertTrue(spotifyOverviewUserAccountPage.isLoaded(), "No pudo hacer login");
+        Assert.assertFalse(spotifyOverviewUserAccountPage.isLoaded(), "Hizo Login");
     }
 
     @Test(description = "TC_US2_004/Acceder al formulario de Inicio de Sesión de Spotify ")
@@ -82,6 +83,7 @@ public class LoginPageTest extends BaseTest {
 
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
         spotifyLoginPage.fillSpotifyLogInForm("", "");
+        spotifyLoginPage.clickOnLoginButton();
 
         List<String> listOfErrors = spotifyLoginPage.getAllSpotifyLogInFormErrorMessages();
         Assert.assertFalse(listOfErrors.isEmpty(), "No arrojo errores");
@@ -99,6 +101,7 @@ public class LoginPageTest extends BaseTest {
 
         SpotifyLoginPage spotifyLoginPage = new SpotifyLoginPage(driver);
         spotifyLoginPage.fillSpotifyLogInForm(user,pass);
+        spotifyLoginPage.clickOnLoginButton();
 
         List<String> listOfErrors = spotifyLoginPage.getAllSpotifyLogInFormErrorMessages();
         Assert.assertTrue(listOfErrors.isEmpty(), "Bad credentials");
@@ -106,7 +109,4 @@ public class LoginPageTest extends BaseTest {
         SpotifyOverviewUserAccountPage spotifyOverviewUserAccountPage = new SpotifyOverviewUserAccountPage(this.driver);
         Assert.assertTrue(spotifyOverviewUserAccountPage.isLoaded(), "No pudo hacer login");
     }
-
-
-
 }
