@@ -5,6 +5,7 @@ import com.qalabs.javabasics.spotify.pages.SpotifyHomePage;
 import com.qalabs.seleniumbasics.spotify.BaseTest;
 import com.qalabs.seleniumbasics.spotify.utilities.PropertyReader;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ public class SpotifyIconTest extends BaseTest {
     private SpotifyHomePage spotifyHomePage;
     private SpotifyHelpPage spotifyHelpPage;
 
-    @BeforeTest
+    @BeforeMethod
     public void initSetup() {
         spotifyUrl = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
         helpUrl = propertyReader.getProperty("credentials.properties", "URL_HELP");
@@ -46,6 +47,6 @@ public class SpotifyIconTest extends BaseTest {
         spotifyHelpPage.clickOnSpotifyIcon();
 
         Assert.assertTrue(spotifyHomePage.isLoaded(), "Página principal no se cargo correctamente");
-        Assert.assertEquals(spotifyHomePage.BASE_URL, driver.getCurrentUrl(), "Cargó una página diferente al de home");
+        Assert.assertTrue(driver.getCurrentUrl().contains(spotifyHomePage.BASE_URL), "Cargó una página diferente al de home");
     }
 }

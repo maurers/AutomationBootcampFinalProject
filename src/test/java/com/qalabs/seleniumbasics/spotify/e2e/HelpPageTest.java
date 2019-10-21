@@ -5,6 +5,7 @@ import com.qalabs.javabasics.spotify.pages.SpotifyHomePage;
 import com.qalabs.seleniumbasics.spotify.BaseTest;
 import com.qalabs.seleniumbasics.spotify.utilities.PropertyReader;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -15,7 +16,7 @@ public class HelpPageTest extends BaseTest {
     private SpotifyHomePage spotifyHomePage;
     private SpotifyHelpPage spotifyHelpPage;
 
-    @BeforeTest
+    @BeforeMethod
     public void initSetup() {
         spotifyUrl = propertyReader.getProperty("credentials.properties", "URL_WEBSITE");
         helpUrl = propertyReader.getProperty("credentials.properties", "URL_HELP");
