@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 
 import java.io.File;
 
@@ -16,6 +17,7 @@ public class WebDriverFactory {
             File chromeFilePath = new File(rootPath, "chromedriver.exe");
             ChromeOptions options= new ChromeOptions();
             options.addArguments("--disable-notifications");
+            options.addArguments("--lang=es-mx");
             System.setProperty("webdriver.chrome.driver", chromeFilePath.getPath());
             return new ChromeDriver(options);
         } else if (browser.toLowerCase().equals("firefox")) {

@@ -11,7 +11,7 @@ public class HomeBodyComponent extends SpotifyComponent {
 
     // Attributes
 
-    @FindBy(how = How.XPATH, using = "//a/text()[contains(translate(., 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLOMNOPQRSTUVWXYZ'), 'OBTÉN')]" )
+    @FindBy(how = How.ID, using = "generic-btn-premium" )
     private WebElement getSpotifyButton;
 
     // Constructor
