@@ -24,9 +24,9 @@ Fecha: **30 de Septiembre 2019**
 
 El diagrama de clases para nuestro framework está dividido en dos categorías, la primera son las clases enfocadas a las páginas y la segunda son los componentes que se derivan de la abstracción de cada una de las páginas.
 
-##Clases de Páginas
+## Clases de Páginas
 
-###Page
+### Page
 Page es una interface que contiene lo siguiente:
 
 **Métodos:**
@@ -34,7 +34,7 @@ Page es una interface que contiene lo siguiente:
 - isLoaded() = El método que al ser implementado servirá para validar que la página ha cargado correctamente.
 - close() = Este método que al ser implementado servirá para cerrar y terminar el driver.
 
-###BasePage
+### BasePage
 La clase BasePage es una clase abstracta que contiene lo siguiente:
 
 **Atributos:**
@@ -47,7 +47,7 @@ La clase BasePage es una clase abstracta que contiene lo siguiente:
 - close() = Este método que tiene la finalidad de cerrar la ventana del navegador en la que se está enfocando el driver y posteriormente cerrar todas las ventanas del navegador y terminar la sesión de manera segura.
 - clickOnSpotifyIcon() = Método abstracto con el cual se dará click al logo para regresar a home y que retorna un valor de tipo SpotifyHomePage.
 
-##SpotifyHomePage
+## SpotifyHomePage
 Clase es pública que extendiende BasePage.
 
 **Atributos:**
@@ -66,7 +66,7 @@ Clase es pública que extendiende BasePage.
 - goToLoginPage() = Método para iniciar sección en Spotify, retorna un elemento SpotifyLoginPage.
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
-###SpotifyLoginPage
+### SpotifyLoginPage
 Clase es pública que extendiende BasePage.
 
 **Atributos:**
@@ -83,7 +83,7 @@ Clase es pública que extendiende BasePage.
 - getAllSpotifyLoginFormErrorMessages() = Médoto que devuelve la lista de errores desplegados.
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
-###SpotifySignUpPage
+### SpotifySignUpPage
 Clase es pública que extendiende BasePage.
 
 **Atributos:**
@@ -100,7 +100,7 @@ Clase es pública que extendiende BasePage.
 - getAllSpotifySignUpFormErrorMessages() = Médoto que devuelve la lista de errores desplegados.
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
-###SpotifyHelpPage
+### SpotifyHelpPage
 Clase es pública que extendiende BasePage.
 
 **Atributos:**
@@ -114,7 +114,7 @@ Clase es pública que extendiende BasePage.
 - isLoaded() = Este método boolean que se utiliza para identificar que la página se ha cargado.
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
-###SpotifyOverviewUserAccountPage
+### SpotifyOverviewUserAccountPage
 Clase es pública que extendiende BasePage.
 
 **Atributos:**
@@ -127,9 +127,9 @@ Clase es pública que extendiende BasePage.
 - isLoad() = Este método boolean que se utiliza para identificar que la página se ha cargado.
 - clickOnSpotifyIcon() = Método para dar click en el logo y regresar a la página principal de Spotify, retorna un elemento de tipo SpotifyHomePage.
 
-##Clases de Componentes
+## Clases de Componentes
 
-###SpotifyComponent
+### SpotifyComponent
 Clase es pública
 
 **Atributos:**
@@ -138,7 +138,7 @@ Clase es pública
 **Métodos:**
 - SpotifyComponent() = Método constructor de la clase el cual recibe como parámetro un elemento de tipo webdriver.
 
-###HomeHeaderComponent
+### HomeHeaderComponent
 Clase es pública que extendiende SpotifyComponent.
 
 **Atributos:**
@@ -155,7 +155,7 @@ Clase es pública que extendiende SpotifyComponent.
 - clickSignUpButton() = Este método crear nuevo usuario y regresa un SpotifySignUpPage.
 - clickHelpButton() = Este método para obtener ayuda de la plataforma y regresa SpotifyHelpPage.
 
-###LoginComponent
+### LoginComponent
 Clase es pública que extendiende SpotifyComponent.
 
 **Atributos:**
@@ -176,7 +176,7 @@ Clase es pública que extendiende SpotifyComponent.
 - getAllErrorMessagesElements() = Método que devuelve una lista de WebElements de mensajes de error.
 - getYellowErrorMessagesElement = Método que devuelve una lista de WebElements de mensajes de warning.
 
-###HomeBodyComponent
+### HomeBodyComponent
 Clase es pública que extendiende SpotifyComponent.
 
 **Atributos:**
@@ -187,7 +187,7 @@ Clase es pública que extendiende SpotifyComponent.
 - getGetSpotifyButton() = Método que devuelve el WebElement del botón de Obten Spotify Gratis.
 - clickOnGetSpotifyButton() = Este método te redirecciona a SpotifySignUpPage.
 
-###SignUpComponent
+### SignUpComponent
 Clase es pública que extendiende SpotifyComponent.
 
 **Atributos:**
@@ -217,7 +217,8 @@ Clase es pública que extendiende SpotifyComponent.
 - getAllErrorMessagesElements() = Método que devuelve una lista de WebElements de mensajes de error.
 
 
-##Equipos
+## Equipos
+
 Equipo 1  | 
 ------------- |
 Armando Cifuentes González  |
