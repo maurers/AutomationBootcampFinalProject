@@ -1,0 +1,3 @@
+com\qalabs\seleniumbasics\spotify\BaseTest.class
+com\qalabs\seleniumbasics\utils\PropertyReader.class
+com\qalabs\seleniumbasics\spotify\SpotifyTest.class

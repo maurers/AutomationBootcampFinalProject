@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="testCases" verbose="1">
+    <test name="Basic Regresion">
+        <classes>
+            <class name="com.qalabs.seleniumbasics.spotify.e2e.SpotifyTest">
+                <methods>
+                    <include name="passTC" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="testCases" verbose="1">
+    <test name="Basic Regresion">
+        <classes>
+            <class name="com.qalabs.seleniumbasics.spotify.e2e.HomePageTest"></class>
+            <class name="com.qalabs.seleniumbasics.spotify.e2e.LoginPageTest"></class>
+            <class name="com.qalabs.seleniumbasics.spotify.e2e.GetSpotifyTest"></class>
+            <class name="com.qalabs.seleniumbasics.spotify.e2e.SignUpPageTest"></class>
+            <class name="com.qalabs.seleniumbasics.spotify.e2e.HelpPageTest"></class>
+            <class name="com.qalabs.seleniumbasics.spotify.e2e.SpotifyIconTest"></class>
+        </classes>
+    </test>
+</suite>
