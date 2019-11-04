@@ -17,8 +17,8 @@ public class SpotifyOverviewUserAccountPage extends BasePage {
 
     private WebDriverWait wait;
 
-    @FindBy(how = How.XPATH, using = "//button[@ng-click='logout()']")
-    private WebElement logoutButton;
+    @FindBy(how = How.ID, using = "your-plan")
+    private WebElement yourPlan;
 
     public static final String BASE_URL = "https://accounts.spotify.com/es/status/";
 
@@ -35,9 +35,9 @@ public class SpotifyOverviewUserAccountPage extends BasePage {
     @Override
     public boolean isLoaded() {
         try {
-            wait.until(ExpectedConditions.visibilityOf(logoutButton));
+            wait.until(ExpectedConditions.visibilityOf(yourPlan));
 
-            return logoutButton.isDisplayed();
+            return yourPlan.isDisplayed();
         } catch (Exception ex) {
             Log.error(ex.toString());
 

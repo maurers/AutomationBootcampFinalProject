@@ -12,7 +12,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         Log.info("I am in Before Method! Test is starting!");
 
@@ -21,7 +21,7 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void teardDown() {
         Log.info("I am in After Method! Test is ending!");
 
